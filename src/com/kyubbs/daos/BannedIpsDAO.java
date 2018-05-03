@@ -1,10 +1,10 @@
 package com.kyubbs.daos;
 
-import java.util.List;
+import java.util.*;
 
 /*pojos will need to be created*/
 public interface BannedIpsDAO {
-	public List<IPAddress> getAllBannedIPs();
+	public ArrayList<IPAddress> getAllBannedIPs();
 	public void addBannedIP(String ipAddr);
 	public BannedIP checkBannedIPByAddr(String ipAddr);
 	
