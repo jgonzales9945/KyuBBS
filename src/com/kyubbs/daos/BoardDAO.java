@@ -1,12 +1,12 @@
 package com.kyubbs.daos;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /*pojos will need to be created*/
-public interface BoardsDAO {
-	public List<Boards> getAllBoards();
-	public List<Boards> getBoardsByCategory(String category);
-	public Boards getBoardsById(Int id);
+public interface BoardDAO {
+	public ArrayList<Board> getAllBoards();
+	public ArrayList<Board> getBoardsByCategory(String category);
+	public Board getBoardsById(Int id);
 	
 	public void addBoard(Board board);
 	

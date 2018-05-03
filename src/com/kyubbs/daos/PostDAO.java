@@ -1,10 +1,10 @@
 package com.kyubbs.daos;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /*pojos will need to be created*/
 public interface PostDAO {
-	public List<Post> getAllPostsByThread(int thread_id);
+	public ArrayList<Post> getAllPostsByThread(int thread_id);
 	
 	public void addPost(Post post);
 	
