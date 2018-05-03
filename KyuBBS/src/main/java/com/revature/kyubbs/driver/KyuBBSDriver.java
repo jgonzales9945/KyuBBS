@@ -11,6 +11,7 @@ public class KyuBBSDriver {
 		UserDAO userDao = new UserDAOImp();
 		User user = new User("JoanelVR", "12345678");
 		
+		// System.out.println(userDao.addUser(user));
 		System.out.println(userDao.getUserByUsername("JoanelVR"));
 	}
 }

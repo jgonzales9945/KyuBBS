@@ -18,7 +18,6 @@ public class UserService {
 				return match;
 			}
 		}
-		
 		return null;
 	}
 }

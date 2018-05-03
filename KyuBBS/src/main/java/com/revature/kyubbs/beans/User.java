@@ -10,8 +10,16 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="userSequence")
-	@SequenceGenerator(allocationSize=1, name="userSequence", sequenceName="SQ_USER_PK")
+	
+	/** 
+	 * @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="userSequence")
+	 * @SequenceGenerator(allocationSize=1, name="userSequence", sequenceName="SQ_USER_PK")
+	 * The sequence generator is not supported by MySql because MySql auto-increments its table values.
+	 * As such we have to do the following:
+	 * 1 - add to the hibernate.cfg.xml file: <property name="dialet">org.hibernate.dialect.MySQL5Dialect</property>
+	 * 2 - add the following instead of @GeneratedValue and @SequenceGenerator: @GeneratedValue(strategy=GenerationType.AUTO)
+	**/
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="USER_ID")
 	private int id;
 	

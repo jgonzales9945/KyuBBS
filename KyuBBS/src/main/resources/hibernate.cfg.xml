@@ -4,13 +4,13 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<property name="hibernate.connection.username">KYUBBSP2_REVATURE</property>
-		<property name="hibernate.connection.password">joanel1520</property>
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@//joanel-revature.cwaezpn64izt.us-east-2.rds.amazonaws.com:1521/ORCL</property>
-		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">KyubbsProject2</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test1</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		
 		<property name="hibernate.show_sql">true</property>
-		
+		<property name="dialet">org.hibernate.dialect.MySQL5Dialect</property>
 		<!-- Do "create" the first time the tables are creates 
 		     Make sure to change it to "update" after the first time
 		     <property name="hibernate.hbm2ddl.auto">create</property>  -->
