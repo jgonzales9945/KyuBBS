@@ -1,172 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
 
 </head>
 <body>
    
 <nav class="navbar">
-  <div class="container-fluid">
+  <div class="container-fluid" >
     <div class="navbar-header">
       <a class="navbar-brand" href="#"><img class="logo" src="assets/kyubbst.png"></a>
-    </div>
-    <!--ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-    </ul-->
 
+      
+    </div>
+ <div class="name-setter">
+    <a href="javascript:void(0);" (click)="openModal(true)">Change Name</a>
+
+    <div id="nameset">
+      <input (keydown)=" $event.keyCode == 13 ? setName(myName):null" [(ngModel)]="myName" name="myName" type="text">
+      <button (click)="setName(myName)">submit</button>
+    </div>
+
+  </div>
   </div>
 </nav>
 
-<div class="container">
+<div class="container ">
     <div class="row">
-  <div class="box h-50 col-lg-12">
+      <div (mouseenter)="hello(true)" (mouseout)="hello(false)"class="sidenav col-lg-1">
+          <img src="assets/kyubbst.png">
+
+          <ul>
+<li routerLink="/landing">Home</li>
+<li>Boards</li>
+<li>Options</li>
+<li>Help</li>
+
+          </ul>
+      </div>
+<div id="mainbody" class="col-lg-11">
+  <div id="box" class="box  ">
     <ul>
-        <li>
+        <li *ngFor="let r of rope">
             <span></span>
-            <div class="title">comment #01</div>
-            <div class="info">the best animation , the best toturials you would ever see .</div>
+            <div class="title">{{r.ID}}</div>
+            <p>{{r.Text}}</p>
 
             <div class="time">
-                <span>JUN, 17<sup>th</sup></span>
-                <span>12:00 AM</span>
+                <span>{{r.Date | date:"shortDate"}}</span>
+                <span>{{r.Date | date:"h:mma"}}</span>
             </div>
         </li>
-     
-          <li>
-              <span></span>
-              <div class="title">comment #01</div>
-              <div class="info">the best animation , the best toturials you would ever see .</div>
+            
+          
   
-              <div class="time">
-                  <span>JUN, 17<sup>th</sup></span>
-                  <span>12:00 AM</span>
-              </div>
-          </li>
-          <li>
-            <span></span>
-            <div class="title">comment #01</div>
-            <div class="info">the best animation , the best toturials you would ever see .</div>
-
-            <div class="time">
-                <span>JUN, 17<sup>th</sup></span>
-                <span>12:00 AM</span>
-            </div>
-        </li>
-        <li>
-          <span></span>
-          <div class="title">comment #01</div>
-          <div class="info">the best animation , the best toturials you would ever see .</div>
-
-          <div class="time">
-              <span>JUN, 17<sup>th</sup></span>
-              <span>12:00 AM</span>
-          </div>
-      </li>
-      <li>
-          <span></span>
-          <div class="title">comment #01</div>
-          <div class="info">the best animation , the best toturials you would ever see .</div>
-
-          <div class="time">
-              <span>JUN, 17<sup>th</sup></span>
-              <span>12:00 AM</span>
-          </div>
-      </li> <li>
-          <span></span>
-          <div class="title">comment #01</div>
-          <div class="info">the best animation , the best toturials you would ever see .</div>
-
-          <div class="time">
-              <span>JUN, 17<sup>th</sup></span>
-              <span>12:00 AM</span>
-          </div>
-      </li> <li>
-          <span></span>
-          <div class="title">comment #01</div>
-          <div class="info">the best animation , the best toturials you would ever see .</div>
-
-          <div class="time">
-              <span>JUN, 17<sup>th</sup></span>
-              <span>12:00 AM</span>
-          </div>
-      </li> <li>
-          <span></span>
-          <div class="title">comment #01</div>
-          <div class="info">the best animation , the best toturials you would ever see .</div>
-
-          <div class="time">
-              <span>JUN, 17<sup>th</sup></span>
-              <span>12:00 AM</span>
-          </div>
-      </li> <li>
-          <span></span>
-          <div class="title">comment #01</div>
-          <div class="info">the best animation , the best toturials you would ever see .</div>
-
-          <div class="time">
-              <span>JUN, 17<sup>th</sup></span>
-              <span>12:00 AM</span>
-          </div>
-      </li> <li>
-          <span></span>
-          <div class="title">comment #01</div>
-          <div class="info">the best animation , the best toturials you would ever see .</div>
-
-          <div class="time">
-              <span>JUN, 17<sup>th</sup></span>
-              <span>12:00 AM</span>
-          </div>
-      </li> <li>
-          <span></span>
-          <div class="title">comment #01</div>
-          <div class="info">the best animation , the best toturials you would ever see .</div>
-
-          <div class="time">
-              <span>JUN, 17<sup>th</sup></span>
-              <span>12:00 AM</span>
-          </div>
-      </li> <li>
-          <span></span>
-          <div class="title">comment #01</div>
-          <div class="info">the best animation , the best toturials you would ever see .</div>
-
-          <div class="time">
-              <span>JUN, 17<sup>th</sup></span>
-              <span>12:00 AM</span>
-          </div>
-      </li> <li>
-          <span></span>
-          <div class="title">comment #01</div>
-          <div class="info">the best animation , the best toturials you would ever see .</div>
-
-          <div class="time">
-              <span>JUN, 17<sup>th</sup></span>
-              <span>12:00 AM</span>
-          </div>
-      </li> <li>
-          <span></span>
-          <div class="title">comment #01</div>
-          <div class="info">the best animation , the best toturials you would ever see .</div>
-
-          <div class="time">
-              <span>JUN, 17<sup>th</sup></span>
-              <span>12:00 AM</span>
-          </div>
-      </li>
           </ul>
         </div>
-        </div>
+        
 
-        <div class="row">
-            <textarea class="col-lg-12 " placeholder="Your message.."></textarea>
-            <br>
-          </div>
-            <!--input type="button" class="button" value="Submit"-->
+
+        <div class="inputbox row">
+        
+            <textarea id="msg" class="col-lg-12" (keyup)="getShift($event)" (keydown)=" $event.keyCode == 13 ? addThread($event) : getShift($event)"   [(ngModel)]="words" name="words" placeholder="Your message.."></textarea>
+            <!--input id="trigger" type="button" (click)="addThread()" class="button" value="Submit"-->
+        </div>
+      </div>
+      </div>
+
 
 
 </div>
+
+
+
+
+
 </body>
 </html>

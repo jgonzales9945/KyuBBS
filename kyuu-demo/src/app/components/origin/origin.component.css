@@ -33,7 +33,7 @@
 textarea {
 
     height: 50px;
-   padding:0;
+   padding:4px 4px 4px 4px;
     box-sizing: border-box;
     border: 2px solid #555;
     border-width:3px;
@@ -43,6 +43,18 @@ textarea {
     color:white;
     resize: none;
     padding: 4px 4px 4px 4px;
+    overflow:hidden;
+    transition: all .1s ease-in-out;
+}
+
+.inputbox{
+
+    height:100px;
+}
+
+textarea:focus {
+    height:100px;
+    
 }
 
 .box{
@@ -53,7 +65,7 @@ textarea {
     padding: 0;
     background-color:rgba(34, 32, 32, 0.9);
     font-family: arial;
-    max-height: 550px;
+    height: 80vh;
 
     padding: 10px 0 40px 60px
 }
@@ -68,19 +80,21 @@ textarea {
 }
 
 .box ul:last-of-type{top:80px}
-
+/*
 .box ul:before{
-    content: "";
-    display: block;
+   
+    display: none;
     width: 0;
     height: 100%;
-    border:1px dashed #fff;
+    /*border:1px dashed #fff;
     position: absolute;
     top:0;
-    left:30px
+    left:0;
 }
-
+*/
+@media(min-width:600px){
 .box ul li{
+    
     margin: 20px 60px 60px;
     position: relative;
     padding: 10px 20px;
@@ -88,10 +102,35 @@ textarea {
     color:#fff;
     border-radius: 10px;
     line-height: 20px;
-    width: 80%
+    width: 80%;
+    word-wrap: break-word;
+}
+
+}
+
+@media(max-width:600px){
+    .box ul li{
+    position: relative;
+    margin: 0 0 20px 0;
+    padding: 10px 20px;
+    background:rgba(255, 255, 255, 0.3);
+    color:#fff;
+    border-radius: 10px;
+    line-height: 20px;
+    width: 80%;
+    word-wrap: break-word;
+    }
 }
 
 
+
+.box ul li:hover{
+    background-color:rgba(255, 255, 255, 0.8);
+    color:black;
+
+}
+
+@media(min-width:600px){
 .box ul li > span{
     content: "";
     display: block;
@@ -101,22 +140,25 @@ textarea {
     position: absolute;
     top:0;
     left:-30px
+    
+}
+
 }
 
 .box ul li > span:before,.box ul li > span:after{
     content: "";
-    display: block;
+    display: none;
     width: 10px;
     height: 10px;
     border-radius: 50%;
       background-color:#313131;
     border:2px solid #fff;
     position: absolute;
-    left:-7.5px
+    padding-left:0;
 }
 
 .box ul li > span:before{top:-10px}
-.box ul li > span:after{top:95%}
+/*.box ul li > span:after{top:30px}*/
 
 .box .title{
     text-transform: uppercase;
@@ -124,7 +166,67 @@ textarea {
     margin-bottom: 5px
 }
 
-.box .info:first-letter{text-transform: capitalize;line-height: 1.7}
+.box p{line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow: hidden;
+    transition: all .2s linear;
+    padding-top: 60px;
+    color:#111;
+    
+}
+
+.sidenav img{
+    height:10%;
+width: auto;
+    margin:auto;
+    float:left;
+}
+
+.sidenav:hover ul{
+    
+    color:white;
+    font-family: 'Nunito';font-size: 22px;
+    float:left;
+    padding:10%;
+    width:100%;
+    text-align:justify;
+    list-style-type: none;
+    margin-left:0;
+
+}
+
+.sidenav:hover ul li{
+    padding-left:0;
+   margin-left:0;
+    border-bottom:solid;
+    text-align:justify;
+}
+
+.sidenav:hover ul li:hover{
+    color:lightskyblue;
+    cursor:pointer;
+}
+
+.sidenav:hover{
+width: 200px;
+z-index: 1;
+}
+
+#mainbody {
+    transition: margin-left .2s linear;
+
+}
 
 .box .name{
     margin-top: 10px;
@@ -134,7 +236,7 @@ textarea {
     margin-right: 20px
 }
 
-
+@media(min-width: 600px){
 .box .time span{
     position: absolute;
     left: -100px;
@@ -142,9 +244,10 @@ textarea {
     font-size:80%;
     font-weight: bold;
 }
-.box .time span:first-child{top:-16px}
-.box .time span:last-child{top:94%}
+.box .time span:first-child{top: 30%}
+.box .time span:last-child{top:45%}
 
+}
 
 .arrow{
     position: absolute;
@@ -183,12 +286,23 @@ width: auto;
 
 }
 
+.name-setter{
+margin:auto;
+margin-top:1em;
+float:right;
+font-family: 'Nunito';
+font-size: 18px;
+
+}
+
+
 body{
     background-color: white;
     background-image: url("/assets/dragon.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center; 
+    background-size:cover;
 }
 
 .button {
