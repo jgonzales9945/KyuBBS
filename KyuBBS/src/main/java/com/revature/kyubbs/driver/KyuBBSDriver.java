@@ -1,17 +1,13 @@
 package com.revature.kyubbs.driver;
 
-import com.revature.kyubbs.beans.User;
-import com.revature.kyubbs.dao.UserDAO;
-import com.revature.kyubbs.dao.UserDAOImp;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class KyuBBSDriver {
 	
 	public static void main(String[] args) {
 		
-		UserDAO userDao = new UserDAOImp();
-		User user = new User("JoanelVR", "12345678");
-		
-		// System.out.println(userDao.addUser(user));
-		System.out.println(userDao.getUserByUsername("JoanelVR"));
+		SpringApplication.run(KyuBBSDriver.class, args);
 	}
 }
