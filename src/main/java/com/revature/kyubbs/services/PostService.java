@@ -1,9 +1,12 @@
-package com.kyubbs.daos;
+package com.revature.kyubbs.services;
 
 import java.util.*;
 
+import com.revature.kyubbs.models.Post;
+import com.revature.kyubbs.models.Report;
+
 /*pojos will need to be created*/
-public interface PostsDAO {
+public interface PostService {
 	public ArrayList<Post> getAllPostsByThread(int thread_id);
 	
 	public void addPost(Post post);

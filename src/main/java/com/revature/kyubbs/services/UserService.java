@@ -1,9 +1,9 @@
-package com.kyubbs.daos;
+package com.revature.kyubbs.services;
 
-import java.util.List;
+import com.revature.kyubbs.models.AuthUser;
 
 /*pojos will need to be created*/
-public interface UserDAO {
+public interface UserService {
 	public AuthUser getAuthUserByName(String auName);
 	
 	public void addAuthUser(AuthUser user);

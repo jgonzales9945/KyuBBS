@@ -1,10 +1,12 @@
-package com.kyubbs.daos;
+package com.revature.kyubbs.services;
 
 import java.util.*;
 
+import com.revature.kyubbs.models.BannedIP;
+
 /*pojos will need to be created*/
-public interface BannedIpsDAO {
-	public ArrayList<IPAddress> getAllBannedIPs();
+public interface BannedIpsService  {
+	public ArrayList<BannedIP> getAllBannedIPs();
 	public void addBannedIP(String ipAddr);
 	public BannedIP checkBannedIPByAddr(String ipAddr);
 	

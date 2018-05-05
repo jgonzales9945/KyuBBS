@@ -1,12 +1,14 @@
-package com.kyubbs.daos;
+package com.revature.kyubbs.services;
 
 import java.util.*;
 
+import com.revature.kyubbs.models.Board;
+
 /*pojos will need to be created*/
-public interface BoardsDAO {
+public interface BoardService {
 	public ArrayList<Board> getAllBoards();
 	public ArrayList<Board> getBoardsByCategory(String category);
-	public Boards getBoardsById(Int id);
+	public Board getBoardsById(int id);
 	
 	public void addBoard(Board board);
 	
