@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="KB_USER")
 public class User implements Serializable{
-
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -26,32 +26,66 @@ public class User implements Serializable{
 	@Column(name="USER_PASSWORD")
 	@NotNull
 	private String password;
-
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@Column(name="USER_TYPE_ID")
+	@NotNull
+	private UserType userType;
+	
 	public User() {
 		super();
 	}
-
-	public User(String username, String password) {
-		super();
-		this.username = username;
-		this.password = password;
-	}
-
-	public User(Long userId, String username, String password) {
+	
+	public User(Long userId, @NotNull String username, @NotNull String password,
+			@NotNull UserType userType) {
 		super();
 		this.userId = userId;
 		this.username = username;
 		this.password = password;
+		this.userType = userType;
 	}
 
-	public Long getUserId() { return userId; }
-	public void setUserId(Long userId) { this.userId = userId; }
+	public User(@NotNull String username, @NotNull String password,
+			@NotNull UserType userType) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.userType = userType;
+	}
+	
+	
 
-	public String getUsername() { return username; }
-	public void setUsername(String username) { this.username = username; }
+	public Long getUserId() {
+		return userId;
+	}
 
-	public String getPassword() { return password; }
-	public void setPassword(String password) { this.password = password; }
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
+	}
 
 	@Override
 	public int hashCode() {
@@ -59,6 +93,7 @@ public class User implements Serializable{
 		int result = 1;
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((userType == null) ? 0 : userType.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -82,6 +117,11 @@ public class User implements Serializable{
 				return false;
 		} else if (!userId.equals(other.userId))
 			return false;
+		if (userType == null) {
+			if (other.userType != null)
+				return false;
+		} else if (!userType.equals(other.userType))
+			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
@@ -92,7 +132,8 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return "KBUser [userId=" + userId + ", username=" + username + ", password=" + password + "]";
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", userType=" + userType
+				+ "]";
 	}
 	
 	
