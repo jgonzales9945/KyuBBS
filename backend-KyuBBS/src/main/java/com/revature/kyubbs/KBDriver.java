@@ -10,5 +10,4 @@ public class KBDriver {
 		
 		SpringApplication.run(KBDriver.class, args);
 	}
-
 }
