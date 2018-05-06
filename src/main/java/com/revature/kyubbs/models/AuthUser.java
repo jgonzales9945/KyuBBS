@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name="KB_USER")
+@Table(name="KB_AUTH_USER_LIST")
 public class AuthUser implements Serializable {
 
 	private static final long serialVersionUID = 1L;
