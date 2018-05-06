@@ -11,7 +11,7 @@ import com.revature.kyubbs.repositories.BannedIPRepository;
 
 @Service
 @Transactional
-public class BannedIpsServiceImp implements BannedIpsService{
+public class BannedIpsServiceImpl implements BannedIpsService{
 
 	@Autowired
 	BannedIPRepository bannedIPRepo;
