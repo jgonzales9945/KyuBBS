@@ -13,7 +13,7 @@ import com.revature.kyubbs.services.PostService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/boards/thread/posts")
+@RequestMapping("/boards/threads/posts")
 public class PostController {
 
 	@Autowired
@@ -23,7 +23,7 @@ public class PostController {
 		super();
 	}
 
-	@GetMapping(value = "/{threadId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/threadId/{threadId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Post> findPostsByThreadId(@PathVariable Long threadId) {
 		return postService.getAllPostsByThread(threadId);
 	}
@@ -43,7 +43,7 @@ public class PostController {
 		postService.updatePost(post);
 	}
 	
-	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void deletePost(@Valid @RequestBody Post post) {
 		postService.deletePost(post);
 	}

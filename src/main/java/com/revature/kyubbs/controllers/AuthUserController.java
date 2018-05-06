@@ -57,7 +57,7 @@ public class AuthUserController {
 		return authUserService.updateAuthUser(updatedUser);
 	}
 
-	@DeleteMapping(value = "/delete/{id}")
+	@DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void deleteAuthUserById(@PathVariable Long id) {
 		authUserService.deleteAuthUser(authUserService.findAuthUserById(id));
 	}

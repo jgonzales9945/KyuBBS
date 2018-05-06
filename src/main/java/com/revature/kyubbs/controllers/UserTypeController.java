@@ -21,38 +21,38 @@ import com.revature.kyubbs.services.UserTypeService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/usertype")
+@RequestMapping("/usertypes")
 public class UserTypeController {
-	
+
 	@Autowired
 	UserTypeService service;
-	
-	@GetMapping(value="/{account}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public UserType findUserTypeByUserAccount(@PathVariable("account") String userAccount) {
-		return service.findUserTypeByUserAccount(userAccount);
-	}
 
-	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<UserType> findAllUserType() {
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<UserType> findAllUserTypes() {
 		return service.findAllUserType();
 	}
 	
-	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public UserType addUserType( @Valid @RequestBody UserType a) {
-		return service.addUserType(a);
-	}
-	
-	@DeleteMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public UserType findUserTypeById( @PathVariable("id") Long id) {
+	@DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public UserType findUserTypeById(@PathVariable Long id) {
 		return service.findUserTypeById(id);
 	}
 	
-	@PatchMapping(produces="application/json", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/{account}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public UserType findUserTypeByUserAccount(@PathVariable String userAccount) {
+		return service.findUserTypeByUserAccount(userAccount);
+	}
+
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public UserType addUserType(@Valid @RequestBody UserType a) {
+		return service.addUserType(a);
+	}
+
+	@PatchMapping(produces = "application/json", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public UserType updateUserType(@Valid @RequestBody UserType a) {
 		return service.updateUserTypeById(a);
 	}
-	
-	@GetMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
+
+	@GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void deleteUserType(@Valid @RequestBody UserType a) {
 		service.deleteUserTypeById(a);
 	}

@@ -21,48 +21,48 @@ import com.revature.kyubbs.services.ReportService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/report")
+@RequestMapping("/reports")
 public class ReportController {
-	
+
 	@Autowired
 	ReportService service;
-	
-	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
+
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Report> findAllReports() {
 		return service.findAllReports();
 	}
-	
-	@GetMapping(value="/{ip}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public Report findReportByIp(@PathVariable("ip") String ip) {
-		return service.findReportByIp(ip);
-	}
-	
-	@GetMapping(value="/{postid}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public Report findReportByPostId(@PathVariable("postid") int id) {
-		return service.findReportByPostId(id);
-	}
-	
-	@GetMapping(value="/{threadid}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public Report findReportByThreadId(@PathVariable("threadid") int id) {
-		return service.findReportByThreadId(id);
-	}
-	
-	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public Report addReport(@Valid @RequestBody Report r) {
-		return service.addReport(r);
-	}
-	
-	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+
+	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Report findReportById(@PathVariable("id") Long id) {
 		return service.findReportById(id);
 	}
 	
-	@PatchMapping(produces="application/json", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/{ip}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Report findReportByIp(@PathVariable("ip") String ip) {
+		return service.findReportByIp(ip);
+	}
+
+	@GetMapping(value = "/{postid}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Report findReportByPostId(@PathVariable("postid") int id) {
+		return service.findReportByPostId(id);
+	}
+
+	@GetMapping(value = "/{threadid}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Report findReportByThreadId(@PathVariable("threadid") int id) {
+		return service.findReportByThreadId(id);
+	}
+
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Report addReport(@Valid @RequestBody Report r) {
+		return service.addReport(r);
+	}
+
+	@PatchMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Report updateReport(@Valid @RequestBody Report r) {
 		return service.updateReportById(r);
 	}
-	
-	@DeleteMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
+
+	@DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void deleteReport(@Valid @RequestBody Report r) {
 		service.deleteReportById(r);
 	}
