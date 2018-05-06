@@ -28,9 +28,9 @@ public class PostController {
 		return postService.getAllPostsByThread(threadId);
 	}
 
-	@GetMapping(value = "/id/{postId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Post findBoardThreadsByBoardId(@PathVariable Long postId) {
-		return postService.findPostById(postId);
+	@GetMapping(value = "/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Post findPostById(@PathVariable Long id) {
+		return postService.findPostById(id);
 	}
 	
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -38,12 +38,12 @@ public class PostController {
 		postService.addPost(post);
 	}
 	
-	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void updatePost(@Valid @RequestBody Post post) {
 		postService.updatePost(post);
 	}
 	
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void deletePost(@Valid @RequestBody Post post) {
 		postService.deletePost(post);
 	}
