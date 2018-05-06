@@ -20,11 +20,11 @@ public class PostController {
 	private PostService postService;
 	
 	public PostController() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	@GetMapping(value = "/{threadId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Post> findPostByThreadId(@PathVariable Long threadId) {
+	public List<Post> findPostsByThreadId(@PathVariable Long threadId) {
 		return postService.getAllPostsByThread(threadId);
 	}
 
@@ -39,13 +39,8 @@ public class PostController {
 	}
 	
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void updatePostContent(@Valid @RequestBody Post post) {
-		postService.updatePostContent(post);
-	}
-	
-	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void updatePostFlag(@Valid @RequestBody Post post) {
-		postService.updatePostFlag(post);
+	public void updatePost(@Valid @RequestBody Post post) {
+		postService.updatePost(post);
 	}
 	
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
