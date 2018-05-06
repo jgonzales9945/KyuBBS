@@ -13,7 +13,7 @@ import com.revature.kyubbs.services.BoardService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/boards")
+@RequestMapping("/board")
 public class BoardController {
 
 	@Autowired
@@ -54,7 +54,7 @@ public class BoardController {
 		return boardService.updateBoard(board);
 	}
 	
-	@DeleteMapping(value="/delete/{id}")
+	@DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void deleteBoardById(@PathVariable Long id) {
 		boardService.deleteBoard(boardService.findBoardById(id));
 	}

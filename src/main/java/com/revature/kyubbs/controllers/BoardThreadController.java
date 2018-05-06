@@ -13,7 +13,7 @@ import com.revature.kyubbs.services.BoardThreadService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/boards/threads")
+@RequestMapping("/boards/thread")
 public class BoardThreadController {
 
 	@Autowired
@@ -69,7 +69,7 @@ public class BoardThreadController {
 		return boardThreadService.updateThread(boardThread);
 	}
 
-	@DeleteMapping(value = "/delete/{id}")
+	@DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void deleteBoardThreadById(@PathVariable Long id) {
 		boardThreadService.deleteBoardThread(boardThreadService.findBoardThreadById(id));
 	}

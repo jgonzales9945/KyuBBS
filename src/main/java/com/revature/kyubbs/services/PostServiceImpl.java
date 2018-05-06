@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.kyubbs.models.Post;
-import com.revature.kyubbs.models.Report;
 import com.revature.kyubbs.repositories.PostRepository;
 
 @Service
@@ -54,5 +53,4 @@ public class PostServiceImpl implements PostService {
 	public void deletePost(Post post) {
 		postrepo.delete(post);
 	}
-
 }
