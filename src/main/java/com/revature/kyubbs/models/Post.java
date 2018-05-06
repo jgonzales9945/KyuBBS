@@ -3,14 +3,9 @@ package com.revature.kyubbs.models;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Component;
 
 @Component
