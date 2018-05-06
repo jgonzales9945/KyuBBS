@@ -64,7 +64,7 @@ public class BoardThreadController {
 		return boardThreadService.addBoardThread(boardThread);
 	}
 
-	@PatchMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public BoardThread updateBoardThread(@Valid @RequestBody BoardThread boardThread) {
 		return boardThreadService.updateThread(boardThread);
 	}
