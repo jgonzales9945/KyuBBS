@@ -15,50 +15,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.kyubbs.models.AuthUserList;
-import com.revature.kyubbs.services.AuthUserListService;
+import com.revature.kyubbs.models.UserType;
+import com.revature.kyubbs.services.UserTypeService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/userlist")
+@RequestMapping("/usertype")
 public class AuthUserListController {
 	
 	@Autowired
-	AuthUserListService service;
+	UserTypeService service;
 	
-	@GetMapping(value="/{userName}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public AuthUserList findAuthUserListByUserName(@PathVariable("userName") String name) {
-		return service.findAuthUserListByUserName(name);
+	@GetMapping(value="/{account}", produces=MediaType.APPLICATION_JSON_VALUE)
+	public UserType findUserTypeByUserAccount(@PathVariable("account") String userAccount) {
+		return service.findUserTypeByUserAccount(userAccount);
 	}
-	
-	@GetMapping(value="/{typeid}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public AuthUserList findAuthUserListByUserTypeId(@PathVariable("typeid")  int id) {
-		return service.findAuthUserListByUserTypeId(id);
-	}
-	
+
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<AuthUserList> findAllAuthUserLists() {
-		return service.findAllAuthUserLists();
+	public List<UserType> findAllUserType() {
+		return service.findAllUserType();
 	}
 	
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public AuthUserList addAuthUserList(@Valid @RequestBody AuthUserList a) {
-		return service.addAuthUserList(a);
+	public UserType addUserType( @Valid @RequestBody UserType a) {
+		return service.addUserType(a);
 	}
 	
 	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
-	public AuthUserList findAuthUserListById(@PathVariable("id") Long id) {
-		return service.findAuthUserListById(id);
+	public UserType findUserTypeById( @PathVariable("id") Long id) {
+		return service.findUserTypeById(id);
 	}
 	
 	@PatchMapping(produces="application/json", consumes=MediaType.APPLICATION_JSON_VALUE)
-	public AuthUserList updateAuthUserList(@Valid @RequestBody AuthUserList a) {
-		return service.updateAuthUserListById(a);
+	public UserType updateUserType(@Valid @RequestBody UserType a) {
+		return service.updateUserTypeById(a);
 	}
 	
 	@GetMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-	public void deleteAuthUser(@Valid @RequestBody AuthUserList a) {
-		service.deleteAuthUserListById(a);;
+	public void deleteUserType(@Valid @RequestBody UserType a) {
+		service.deleteUserTypeById(a);
 	}
-	
+
 }
