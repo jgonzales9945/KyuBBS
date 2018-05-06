@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -56,11 +58,13 @@ public class BoardThread {
 	@NotNull
 	private String ipAddress;
 	
-	@Column(name="AUTH_USER_ID")
+	@ManyToOne
+	@JoinColumn(name="AUTH_USER_ID")
 	@NotNull
 	private Long authenticatedUserId;
 	
-	@Column(name="BOARD_ID")
+	@ManyToOne
+	@JoinColumn(name="BOARD_ID")
 	@NotNull
 	private Long boardId;
 	
