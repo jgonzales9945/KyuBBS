@@ -23,7 +23,7 @@ public class AuthUser implements Serializable {
 	@NotNull
 	private String username;
 
-	@ManyToOne
+	@ManyToOne(targetEntity = UserType.class)
 	@JoinColumn(name="USER_TYPE_ID")
 	@NotNull
 	private Long userTypeId;

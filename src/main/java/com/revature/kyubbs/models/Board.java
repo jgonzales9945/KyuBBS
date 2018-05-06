@@ -40,7 +40,7 @@ public class Board implements Serializable {
 	@NotNull
 	private int maxPosts;
 	
-	@ManyToOne
+	@ManyToOne(targetEntity = Category.class)
 	@JoinColumn(name="CATEGORY_ID")
 	@NotNull
 	private int categoryId;

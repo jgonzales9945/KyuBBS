@@ -51,15 +51,15 @@ public class BoardThread {
 	@NotNull
 	private String ipAddress;
 	
-	@ManyToOne
-	@JoinColumn(name="AUTH_USER_ID")
-	@NotNull
-	private Long authenticatedUserId;
-	
-	@ManyToOne
-	@JoinColumn(name="BOARD_ID")
-	@NotNull
-	private Long boardId;
+	@ManyToOne(targetEntity = AuthUser.class)
+    @JoinColumn(name="AUTH_USER_ID")
+    @NotNull
+    private Long authenticatedUserId;
+    
+    @ManyToOne(targetEntity = Board.class)
+    @JoinColumn(name="BOARD_ID")
+    @NotNull
+    private Long boardId;
 	
 	public BoardThread() {
 		super();

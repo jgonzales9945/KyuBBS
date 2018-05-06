@@ -40,11 +40,13 @@ public class Post implements Serializable {
 	@Column(name="POST_IP_ADDRESS")
 	@NotNull	
 	private String IPAddress;
-
-	@Column(name="AUTH_USER_ID")
+	
+	@ManyToOne(targetEntity = AuthUser.class)
+	@JoinColumn(name="AUTH_USER_ID")
 	private long auth_user_id;
-
-	@Column(name="THREAD_ID")
+	
+	@ManyToOne(targetEntity = BoardThread.class)
+	@JoinColumn(name="THREAD_ID")
 	@NotNull	
 	private long thread_id;
 	
