@@ -1,20 +1,24 @@
 package com.revature.kyubbs.services;
 
-import java.util.*;
+import java.util.List;
 
 import com.revature.kyubbs.models.Board;
 
-/*pojos will need to be created*/
 public interface BoardService {
-	public ArrayList<Board> getAllBoards();
-	public ArrayList<Board> getBoardsByCategory(String category);
-	public Board getBoardsById(int id);
-	
-	public void addBoard(Board board);
-	
-	public void updateBoardName(Board board);
-	public void updateBoardDesc(Board board);
-	public void updateBoardMaxThreads(Board board);
-	public void updateBoardMaxPosts(Board board);
-	
+
+	public List<Board> findAllBoards();
+
+	public List<Board> findBoardsByCategoryId(Long categoryId);
+
+	public Board findBoardById(Long id);
+
+	public Board findBoardByName(String name);
+
+	public Board findBoardByDesc(String desc);
+
+	public Board addBoard(Board board);
+
+	public Board updateBoard(Board board);
+
+	public void deleteBoard(Board board);
 }

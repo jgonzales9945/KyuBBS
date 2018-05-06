@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -45,7 +47,8 @@ public class Board implements Serializable {
 	@NotNull
 	private int maxPosts;
 	
-	@Column(name="CATEGORY_ID")
+	@ManyToOne
+	@JoinColumn(name="CATEGORY_ID")
 	@NotNull
 	private int categoryId;
 

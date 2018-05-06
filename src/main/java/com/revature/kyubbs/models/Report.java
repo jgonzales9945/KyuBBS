@@ -42,6 +42,10 @@ public class Report implements Serializable{
 	@Column(name="POST_ID")
 	private int postId;
 
+	public Report() {
+		super();
+	}
+	
 	public Report(Long reportId, @NotNull String ip, @NotNull Timestamp date, int count, int threadId, int postId) {
 		super();
 		this.reportId = reportId;
@@ -50,10 +54,6 @@ public class Report implements Serializable{
 		this.count = count;
 		this.threadId = threadId;
 		this.postId = postId;
-	}
-
-	public Report() {
-		super();
 	}
 
 	public Report(@NotNull String ip, @NotNull Timestamp date, int count, int threadId, int postId) {
