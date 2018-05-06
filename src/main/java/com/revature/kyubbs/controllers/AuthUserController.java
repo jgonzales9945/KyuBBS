@@ -32,17 +32,17 @@ public class AuthUserController {
 		return authUserService.findAllAuthUsers();
 	}
 
-	@GetMapping(value = "/{userTypeId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/userTypeId/{userTypeId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<AuthUser> findAuthUsersByUserTypeId(@PathVariable Long userTypeId) {
 		return authUserService.findAuthUsersByUserTypeId(userTypeId);
 	}
 
-	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public AuthUser findAuthUserById(@PathVariable Long id) {
 		return authUserService.findAuthUserById(id);
 	}
 
-	@GetMapping(value = "/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/username/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public AuthUser findAuthUserByUsername(@PathVariable String username) {
 		return authUserService.findAuthUserByUsername(username);
 	}
