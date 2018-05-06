@@ -46,12 +46,7 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public void updatePostFlag(Post post) {
-		postrepo.save(post);
-	}
-
-	@Override
-	public void updatePostContent(Post post) {
+	public void updatePost(Post post) {
 		postrepo.save(post);
 	}
 
