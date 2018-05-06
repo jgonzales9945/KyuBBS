@@ -11,7 +11,7 @@ import com.revature.kyubbs.repositories.ReportRepository;
 
 @Service
 @Transactional
-public class ReportServiceImp implements ReportService{
+public class ReportServiceImpl implements ReportService{
 	
 	@Autowired
 	ReportRepository reportRepo;

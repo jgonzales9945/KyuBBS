@@ -7,7 +7,7 @@ import com.revature.kyubbs.models.Report;
 
 /*pojos will need to be created*/
 public interface PostService {
-	public ArrayList<Post> getAllPostsByThread(int thread_id);
+	public List<Post> getAllPostsByThread(int thread_id);
 	
 	public void addPost(Post post);
 	
