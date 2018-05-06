@@ -21,7 +21,7 @@ import com.revature.kyubbs.services.BoardThreadService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/boards")
+@RequestMapping("/boards/threads")
 public class BoardThreadController {
 
 	@Autowired
@@ -32,32 +32,37 @@ public class BoardThreadController {
 		return boardThreadService.findAllBoardThreads();
 	}
 
-	@GetMapping(value = "/{ipAddress}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/ip/{ipAddress}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<BoardThread> findBoardThreadsByIpAddress(@PathVariable String ipAddress) {
 		return boardThreadService.findBoardThreadsByIpAddress(ipAddress);
 	}
 
-	@GetMapping(value = "/{authenticatedUserId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/authenticatedUserId/{authenticatedUserId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<BoardThread> findBoardThreadsByAuthenticatedUserId(@PathVariable Long authenticatedUserId) {
 		return boardThreadService.findBoardThreadsByAuthenticatedUserId(authenticatedUserId);
 	}
+	
+	@GetMapping(value = "/boardId/{boardId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<BoardThread> findBoardThreadsByBoardId(@PathVariable Long boardId) {
+		return boardThreadService.findBoardThreadsByBoardId(boardId);
+	}
 
-	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public BoardThread findBoardThreadById(@PathVariable Long id) {
 		return boardThreadService.findBoardThreadById(id);
 	}
 
-	@GetMapping(value = "/{title}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/title/{title}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public BoardThread findBoardThreadByTitle(@PathVariable String title) {
 		return boardThreadService.findBoardThreadByTitle(title);
 	}
 
-	@GetMapping(value = "/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public BoardThread findBoardThreadByName(@PathVariable String name) {
 		return boardThreadService.findBoardThreadByName(name);
 	}
 
-	@GetMapping(value = "/{subject}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/subject/{subject}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public BoardThread findBoardThreadBySubject(@PathVariable String subject) {
 		return boardThreadService.findBoardThreadBySubject(subject);
 	}

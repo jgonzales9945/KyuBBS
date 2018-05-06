@@ -15,5 +15,4 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 	public Board findBoardByDesc(String desc);
 
 	public List<Board> findBoardsByCategoryId(Long categoryId);
-
 }

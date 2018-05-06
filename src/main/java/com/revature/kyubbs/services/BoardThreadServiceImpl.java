@@ -35,6 +35,11 @@ public class BoardThreadServiceImpl implements BoardThreadService {
 	public List<BoardThread> findBoardThreadsByAuthenticatedUserId(Long authenticatedUserId) {
 		return boardThreadRepo.findBoardThreadsByAuthenticatedUserId(authenticatedUserId);
 	}
+	
+	@Override
+	public List<BoardThread> findBoardThreadsByBoardId(Long boardId) {
+		return boardThreadRepo.findBoardThreadsByBoardId(boardId);
+	}
 
 	@Override
 	public BoardThread addBoardThread(BoardThread boardThread) {

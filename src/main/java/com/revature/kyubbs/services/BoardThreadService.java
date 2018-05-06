@@ -11,6 +11,8 @@ public interface BoardThreadService {
 	public List<BoardThread> findBoardThreadsByIpAddress(String ipAddress);
 
 	public List<BoardThread> findBoardThreadsByAuthenticatedUserId(Long authenticatedUserId);
+	
+	public List<BoardThread> findBoardThreadsByBoardId(Long boardId);
 
 	public BoardThread findBoardThreadById(Long id);
 

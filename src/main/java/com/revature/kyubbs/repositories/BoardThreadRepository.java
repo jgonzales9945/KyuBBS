@@ -19,4 +19,6 @@ public interface BoardThreadRepository extends JpaRepository<BoardThread, Long> 
 	public List<BoardThread> findBoardThreadsByIpAddress(String ipAddress);
 
 	public List<BoardThread> findBoardThreadsByAuthenticatedUserId(Long authenticatedUserId);
+	
+	public List<BoardThread> findBoardThreadsByBoardId(Long boardId);
 }
