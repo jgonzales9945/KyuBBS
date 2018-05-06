@@ -35,6 +35,7 @@ public class PostServiceImpl implements PostService {
 		return returnPost;
 	}
 
+	@Override
 	public Post findPostById(Long id) {
 		return postrepo.getOne(id);
 	}
