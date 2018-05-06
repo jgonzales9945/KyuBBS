@@ -49,7 +49,7 @@ public class BoardController {
 		return boardService.addBoard(board);
 	}
 	
-	@PatchMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Board updateBoard(@Valid @RequestBody Board board) {
 		return boardService.updateBoard(board);
 	}
