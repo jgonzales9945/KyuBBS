@@ -1,5 +1,6 @@
 package com.revature.kyubbs.models;
 
+<<<<<<< HEAD
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -119,3 +120,12 @@ public class AuthUser implements Serializable {
 		return "AuthUser [userId=" + userId + ", username=" + username + ", userTypeId=" + userTypeId + "]";
 	}
 }
+=======
+public class AuthUser {
+
+	public AuthUser() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
+>>>>>>> f56ff0bdcdb432613bb5f9ab7995fc3a38fd5f99

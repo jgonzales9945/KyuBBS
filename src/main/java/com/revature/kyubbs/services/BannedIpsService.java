@@ -6,11 +6,10 @@ import com.revature.kyubbs.models.BannedIP;
 
 /*pojos will need to be created*/
 public interface BannedIpsService  {
-	public ArrayList<BannedIP> getAllBannedIPs();
-	public void addBannedIP(String ipAddr);
-	public BannedIP checkBannedIPByAddr(String ipAddr);
-	
-	public void updateBannedIPByAddr(BannedIP bip);
-	public void checkBannedIPByAddr(BannedIP bip);
-	public void deleteBannedIP(BannedIP bip);
+	public List<BannedIP> findAllBannedIPs();
+	public BannedIP addBannedIP(BannedIP b);
+	public BannedIP findBannedIPByIpAddress(String ipAddress);
+	public BannedIP findBannedIpById(Long id);
+	public BannedIP updateBannedIPById(BannedIP b);
+	public void deleteBannedIPById(BannedIP b);
 }

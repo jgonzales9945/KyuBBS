@@ -1,9 +1,15 @@
 Manifest-Version: 1.0
 Implementation-Title: KyuBBS
 Implementation-Version: 0.0.1-SNAPSHOT
+<<<<<<< HEAD
 Built-By: Noah
 Implementation-Vendor-Id: com.revature
 Build-Jdk: 1.8.0_171
+=======
+Built-By: tritonium
+Implementation-Vendor-Id: com.revature
+Build-Jdk: 1.8.0_131
+>>>>>>> f56ff0bdcdb432613bb5f9ab7995fc3a38fd5f99
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/KyuBBS
 Created-By: Maven Integration for Eclipse
