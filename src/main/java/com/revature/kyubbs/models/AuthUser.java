@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name = "KYUBBS_USER")
+@Table(name = "KB_USER")
 public class AuthUser implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,7 +22,7 @@ public class AuthUser implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "AUTHUSER_ID")
-	private Long user_id;
+	private Long userId;
 
 	@Column(name = "USER_NAME")
 	@NotNull
@@ -38,7 +38,7 @@ public class AuthUser implements Serializable {
 
 	public AuthUser(Long user_id, @NotNull String username, @NotNull Long userTypeId) {
 		super();
-		this.user_id = user_id;
+		this.userId = user_id;
 		this.username = username;
 		this.userTypeId = userTypeId;
 	}
@@ -49,12 +49,12 @@ public class AuthUser implements Serializable {
 		this.userTypeId = userTypeId;
 	}
 
-	public Long getUser_id() {
-		return user_id;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(Long user_id) {
-		this.user_id = user_id;
+	public void setUserId(Long user_id) {
+		this.userId = user_id;
 	}
 
 	public String getUsername() {
@@ -82,7 +82,7 @@ public class AuthUser implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((userTypeId == null) ? 0 : userTypeId.hashCode());
-		result = prime * result + ((user_id == null) ? 0 : user_id.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -101,10 +101,10 @@ public class AuthUser implements Serializable {
 				return false;
 		} else if (!userTypeId.equals(other.userTypeId))
 			return false;
-		if (user_id == null) {
-			if (other.user_id != null)
+		if (userId == null) {
+			if (other.userId != null)
 				return false;
-		} else if (!user_id.equals(other.user_id))
+		} else if (!userId.equals(other.userId))
 			return false;
 		if (username == null) {
 			if (other.username != null)
@@ -116,6 +116,6 @@ public class AuthUser implements Serializable {
 
 	@Override
 	public String toString() {
-		return "AuthUser [user_id=" + user_id + ", username=" + username + ", userTypeId=" + userTypeId + "]";
+		return "AuthUser [userId=" + userId + ", username=" + username + ", userTypeId=" + userTypeId + "]";
 	}
 }
