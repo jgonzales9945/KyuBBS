@@ -12,7 +12,7 @@ import com.revature.kyubbs.repositories.BoardRepository;
 @Service
 @Transactional
 public class BoardServiceImpl implements BoardService {
-	
+
 	@Autowired
 	BoardRepository boardRepo;
 
@@ -30,12 +30,12 @@ public class BoardServiceImpl implements BoardService {
 	public Board findBoardById(Long id) {
 		return boardRepo.getOne(id);
 	}
-	
+
 	@Override
 	public Board findBoardByName(String name) {
 		return boardRepo.findBoardByName(name);
 	}
-	
+
 	@Override
 	public Board findBoardByDesc(String desc) {
 		return boardRepo.findBoardByDesc(desc);
@@ -43,13 +43,13 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Board addBoard(Board board) {
-		
-		for(Board b : findAllBoards()) {
-			if(b.getName().equals(b.getName())) {
+
+		for (Board b : findAllBoards()) {
+			if (b.getName().equals(b.getName())) {
 				return null;
 			}
 		}
-		
+
 		return boardRepo.save(board);
 	}
 
@@ -57,7 +57,7 @@ public class BoardServiceImpl implements BoardService {
 	public Board updateBoard(Board board) {
 		return boardRepo.save(board);
 	}
-	
+
 	@Override
 	public void deleteBoard(Board board) {
 		boardRepo.delete(board);

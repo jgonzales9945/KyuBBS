@@ -9,7 +9,8 @@ import com.revature.kyubbs.models.AuthUser;
 
 @Repository
 public interface AuthUserRepository extends JpaRepository<AuthUser, Long> {
-	
+
 	public List<AuthUser> findAuthUsersByUserTypeId(Long userTypeId);
-	public AuthUser findAuthUserByUsername(String username);	
+
+	public AuthUser findAuthUserByUsername(String username);
 }

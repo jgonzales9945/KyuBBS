@@ -9,10 +9,14 @@ import com.revature.kyubbs.models.BoardThread;
 
 @Repository
 public interface BoardThreadRepository extends JpaRepository<BoardThread, Long> {
-	
+
 	public BoardThread findBoardThreadByTitle(String title);
+
 	public BoardThread findBoardThreadByName(String name);
+
 	public BoardThread findBoardThreadBySubject(String subject);
+
 	public List<BoardThread> findBoardThreadsByIpAddress(String ipAddress);
-	public List<BoardThread> findBoardThreadsByAuthenticatedUserId(String authenticatedUserId);
+
+	public List<BoardThread> findBoardThreadsByAuthenticatedUserId(Long authenticatedUserId);
 }

@@ -14,17 +14,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name = "KB_USER")
+@Table(name="KB_USER")
 public class AuthUser implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "AUTHUSER_ID")
+	@Column(name="AUTHUSER_ID")
 	private Long userId;
 
-	@Column(name = "USER_NAME")
+	@Column(name="USER_NAME")
 	@NotNull
 	private String username;
 

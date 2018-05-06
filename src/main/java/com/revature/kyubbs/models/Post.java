@@ -18,9 +18,6 @@ import org.springframework.stereotype.Component;
 @Table(name="KB_POSTS")
 public class Post implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -57,7 +54,34 @@ public class Post implements Serializable {
 	private long thread_id;
 	
 	public Post() {
-		// TODO Auto-generated constructor stub
+		super();
+	}
+
+	public Post(long post_id, String name, @NotNull String content, @NotNull Timestamp start_Date,
+			Timestamp modified_Date, int flag, @NotNull String iPAddress, long auth_user_id, @NotNull long thread_id) {
+		super();
+		this.post_id = post_id;
+		Name = name;
+		Content = content;
+		Start_Date = start_Date;
+		Modified_Date = modified_Date;
+		this.flag = flag;
+		IPAddress = iPAddress;
+		this.auth_user_id = auth_user_id;
+		this.thread_id = thread_id;
+	}
+	
+	public Post(String name, @NotNull String content, @NotNull Timestamp start_Date, Timestamp modified_Date, int flag,
+			@NotNull String iPAddress, long auth_user_id, @NotNull long thread_id) {
+		super();
+		Name = name;
+		Content = content;
+		Start_Date = start_Date;
+		Modified_Date = modified_Date;
+		this.flag = flag;
+		IPAddress = iPAddress;
+		this.auth_user_id = auth_user_id;
+		this.thread_id = thread_id;
 	}
 
 	public long getPost_id() {

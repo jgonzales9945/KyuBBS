@@ -32,7 +32,7 @@ public class BoardThreadServiceImpl implements BoardThreadService {
 	}
 
 	@Override
-	public List<BoardThread> findBoardThreadsByAuthenticatedUserId(String authenticatedUserId) {
+	public List<BoardThread> findBoardThreadsByAuthenticatedUserId(Long authenticatedUserId) {
 		return boardThreadRepo.findBoardThreadsByAuthenticatedUserId(authenticatedUserId);
 	}
 

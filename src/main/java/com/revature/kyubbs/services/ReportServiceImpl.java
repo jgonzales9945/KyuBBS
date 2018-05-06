@@ -11,8 +11,8 @@ import com.revature.kyubbs.repositories.ReportRepository;
 
 @Service
 @Transactional
-public class ReportServiceImpl implements ReportService{
-	
+public class ReportServiceImpl implements ReportService {
+
 	@Autowired
 	ReportRepository reportRepo;
 
@@ -53,8 +53,8 @@ public class ReportServiceImpl implements ReportService{
 
 	@Override
 	public void deleteReportById(Report r) {
-		
+
 		reportRepo.delete(r);
-		
+
 	}
 }

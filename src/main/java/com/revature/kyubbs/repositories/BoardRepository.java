@@ -9,9 +9,11 @@ import com.revature.kyubbs.models.Board;
 
 @Repository
 public interface BoardRepository extends JpaRepository<Board, Long> {
-	
+
 	public Board findBoardByName(String name);
+
 	public Board findBoardByDesc(String desc);
+
 	public List<Board> findBoardsByCategoryId(Long categoryId);
 
 }

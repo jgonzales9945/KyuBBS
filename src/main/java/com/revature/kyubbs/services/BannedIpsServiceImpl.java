@@ -11,11 +11,11 @@ import com.revature.kyubbs.repositories.BannedIPRepository;
 
 @Service
 @Transactional
-public class BannedIpsServiceImpl implements BannedIpsService{
+public class BannedIpsServiceImpl implements BannedIpsService {
 
 	@Autowired
 	BannedIPRepository bannedIPRepo;
-	
+
 	@Override
 	public List<BannedIP> findAllBannedIPs() {
 		return bannedIPRepo.findAll();

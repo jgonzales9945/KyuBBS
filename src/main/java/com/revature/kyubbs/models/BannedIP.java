@@ -129,6 +129,4 @@ public class BannedIP implements Serializable{
 		return "BannedIP [bannedId=" + bannedId + ", ipAddress=" + ipAddress + ", startDate=" + startDate + ", expDate="
 				+ expDate + "]";
 	}
-	
-	
 }

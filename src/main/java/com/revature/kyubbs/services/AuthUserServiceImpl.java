@@ -12,7 +12,7 @@ import com.revature.kyubbs.repositories.AuthUserRepository;
 @Service
 @Transactional
 public class AuthUserServiceImpl implements AuthUserService {
-	
+
 	@Autowired
 	AuthUserRepository authUserRepo;
 
@@ -38,8 +38,8 @@ public class AuthUserServiceImpl implements AuthUserService {
 
 	@Override
 	public AuthUser addAuthUser(AuthUser authUser) {
-		for(AuthUser au : findAllAuthUsers()) {
-			if(au.getUsername().equals(au.getUsername())) {
+		for (AuthUser au : findAllAuthUsers()) {
+			if (au.getUsername().equals(au.getUsername())) {
 				return null;
 			}
 		}
@@ -54,6 +54,6 @@ public class AuthUserServiceImpl implements AuthUserService {
 	@Override
 	public void deleteAuthUser(AuthUser authUser) {
 		authUserRepo.delete(authUser);
-		
+
 	}
 }
