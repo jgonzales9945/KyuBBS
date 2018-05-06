@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,7 +42,7 @@ public class UserTypeController {
 		return service.addUserType(a);
 	}
 	
-	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public UserType findUserTypeById( @PathVariable("id") Long id) {
 		return service.findUserTypeById(id);
 	}

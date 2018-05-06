@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,7 +52,7 @@ public class BannedIpsController {
 		return service.updateBannedIPById(b);
 	}
 	
-	@GetMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void deleteBannedIP(@Valid @RequestBody BannedIP b) {
 		service.deleteBannedIPById(b);
 	}

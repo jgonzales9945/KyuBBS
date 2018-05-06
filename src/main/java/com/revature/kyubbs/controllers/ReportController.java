@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -61,7 +62,7 @@ public class ReportController {
 		return service.updateReportById(r);
 	}
 	
-	@GetMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void deleteReport(@Valid @RequestBody Report r) {
 		service.deleteReportById(r);
 	}
