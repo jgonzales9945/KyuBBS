@@ -18,7 +18,7 @@ public class Post implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="POST_ID")
-	private long post_id;
+	private Long post_id;
 	
 	@Column(name="POST_NAME")
 	private String Name;
@@ -43,12 +43,12 @@ public class Post implements Serializable {
 	
 	@ManyToOne(targetEntity = AuthUser.class)
 	@JoinColumn(name="AUTH_USER_ID")
-	private long auth_user_id;
+	private Long auth_user_id;
 	
 	@ManyToOne(targetEntity = BoardThread.class)
 	@JoinColumn(name="THREAD_ID")
 	@NotNull	
-	private long thread_id;
+	private Long thread_id;
 	
 	public Post() {
 		super();

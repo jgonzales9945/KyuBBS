@@ -160,19 +160,19 @@ INSERT INTO KB_CATEGORY(CATEGORY_ID, CATEGORY_NAME) VALUES(6,'HISTORY');
 create users for the specific database tables
 ****************************************************************************/
 DROP USER 'anonymous'@'localhost';
-CREATE USER 'anonymous'@'localhost' IDENTIFIED BY 'pa$$00rRd';
-GRANT Insert ON NINEBBSDB.KB_REPORTS TO 'anonymous'@'localhost' ;
-GRANT Insert ON NINEBBSDB.KB_THREADS TO 'anonymous'@'localhost' ;
-GRANT Select ON NINEBBSDB.KB_THREADS TO 'anonymous'@'localhost' ;
-GRANT Insert ON NINEBBSDB.KB_POSTS TO 'anonymous'@'localhost' ;
-GRANT Select ON NINEBBSDB.KB_POSTS TO 'anonymous'@'localhost' ;
-GRANT Select ON NINEBBSDB.KB_AUTH_USER_LIST TO 'anonymous'@'localhost' ;
+CREATE USER 'anonymous'@'%' IDENTIFIED BY 'pa$$00rRd';
+GRANT Insert ON NINEBBSDB.KB_REPORTS TO 'anonymous'@'%' ;
+GRANT Insert ON NINEBBSDB.KB_THREADS TO 'anonymous'@'%' ;
+GRANT Select ON NINEBBSDB.KB_THREADS TO 'anonymous'@'%' ;
+GRANT Insert ON NINEBBSDB.KB_POSTS TO 'anonymous'@'%' ;
+GRANT Select ON NINEBBSDB.KB_POSTS TO 'anonymous'@'%' ;
+GRANT Select ON NINEBBSDB.KB_AUTH_USER_LIST TO 'anonymous'@'%' ;
 GRANT SELECT/*for board access*/
 ON NINEBBSDB.KB_BOARDS
-TO 'anonymous'@'localhost';
+TO 'anonymous'@'%';
 
 DROP USER 'moderator'@'localhost';
-CREATE USER 'moderator'@'localhost' IDENTIFIED BY 'P4$WWW00RRdd';
+CREATE USER 'moderator'@'%' IDENTIFIED BY 'P4$WWW00RRdd';
 GRANT Delete ON NINEBBSDB.KB_BANNED_IP TO 'moderator'@'localhost' ;
 GRANT Insert ON NINEBBSDB.KB_BANNED_IP TO 'moderator'@'localhost' ;
 GRANT Select ON NINEBBSDB.KB_BANNED_IP TO 'moderator'@'localhost' ;
@@ -194,7 +194,7 @@ GRANT Select ON NINEBBSDB.KB_AUTH_USER_LIST TO 'moderator'@'localhost' ;
 GRANT SELECT ON NINEBBSDB.KB_BOARDS TO 'moderator'@'localhost';
 
 DROP USER 'administrator'@'localhost';
-CREATE USER 'administrator'@'localhost' IDENTIFIED BY 'T3P4$W$W#W00#rRfd';
+CREATE USER 'administrator'@'%' IDENTIFIED BY 'T3P4$W$W#W00#rRfd';
 GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP
 ON NINEBBSDB.*/*admin gets full access*/
-TO 'administrator'@'localhost';
+TO 'administrator'@'%';
