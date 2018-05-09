@@ -2,21 +2,18 @@ package com.revature.kyubbs.models;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
 @Component
 @Entity
+<<<<<<< HEAD
 @Table(name = "KB_USER")
+=======
+@Table(name="KB_AUTH_USER_LIST")
+>>>>>>> d1c30c2564938199c1f9bdb0ae972a76843e5a93
 public class AuthUser implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -30,8 +27,13 @@ public class AuthUser implements Serializable {
 	@NotNull
 	private String username;
 
+<<<<<<< HEAD
 	@ManyToOne(targetEntity = UserType.class)
 	@JoinColumn(name = "USER_TYPE_ID")
+=======
+	@ManyToOne(targetEntity = UserType.class, fetch=FetchType.EAGER)
+	@JoinColumn(name="USER_TYPE_ID")
+>>>>>>> d1c30c2564938199c1f9bdb0ae972a76843e5a93
 	@NotNull
 	private Long userTypeId;
 

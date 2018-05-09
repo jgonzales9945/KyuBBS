@@ -21,7 +21,7 @@ import com.revature.kyubbs.services.ReportService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/reports")
+@RequestMapping("/report")
 public class ReportController {
 
 	@Autowired

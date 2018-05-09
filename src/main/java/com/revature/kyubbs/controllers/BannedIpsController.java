@@ -21,7 +21,7 @@ import com.revature.kyubbs.services.BannedIpsService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/bannedips")
+@RequestMapping("/bannedip")
 public class BannedIpsController {
 
 	@Autowired

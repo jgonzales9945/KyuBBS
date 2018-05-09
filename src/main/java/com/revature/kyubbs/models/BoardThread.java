@@ -1,8 +1,10 @@
 package com.revature.kyubbs.models;
 
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
+<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+=======
+import javax.persistence.*;
+>>>>>>> d1c30c2564938199c1f9bdb0ae972a76843e5a93
 import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
@@ -19,8 +24,10 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="KB_THREADS")
 
-public class BoardThread {
+public class BoardThread implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="THREAD_ID")
@@ -58,6 +65,7 @@ public class BoardThread {
 	@NotNull
 	private String ipAddress;
 	
+<<<<<<< HEAD
 	@ManyToOne(targetEntity = AuthUser.class)
 	@JoinColumn(name="AUTH_USER_ID")
 	@NotNull
@@ -67,6 +75,17 @@ public class BoardThread {
 	@JoinColumn(name="BOARD_ID")
 	@NotNull
 	private Long boardId;
+=======
+	@ManyToOne(targetEntity = AuthUser.class, cascade = CascadeType.DETACH, fetch=FetchType.EAGER)
+    @JoinColumn(name="AUTH_USER_ID", referencedColumnName="AUTH_USER_ID", table="KB_AUTH_USER_LIST")
+    @NotNull
+    private Long authenticatedUserId;
+    
+    @ManyToOne(targetEntity = Board.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="THREAD_ID", referencedColumnName="BOARD_ID", table="KB_BOARDS")
+    @NotNull
+    private Long boardId;
+>>>>>>> d1c30c2564938199c1f9bdb0ae972a76843e5a93
 	
 	public BoardThread() {
 		super();

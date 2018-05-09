@@ -21,7 +21,7 @@ import com.revature.kyubbs.services.UserTypeService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/usertypes")
+@RequestMapping("/usertype")
 public class UserTypeController {
 
 	@Autowired
