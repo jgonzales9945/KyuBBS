@@ -1,1 +1,3 @@
 /.metadata/
+#Ignore pom.properties
+/target/classes/META-INF/maven/com.revature/KyuBBS/pom.properties

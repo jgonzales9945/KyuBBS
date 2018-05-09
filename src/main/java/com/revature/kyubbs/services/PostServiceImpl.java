@@ -18,16 +18,16 @@ public class PostServiceImpl implements PostService {
 	PostRepository postrepo;
 
 	public PostServiceImpl() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	@Override
-	public List<Post> getAllPostsByThread(Long thread_id) {
+	public List<Post> getAllPostsByThread(Long threadId) {
 		List<Post> temp = postrepo.findAll();
 		List<Post> returnPost = new ArrayList<Post>();
 
 		for (Post p : temp) {
-			if (p.getThread_id() == thread_id) {
+			if (p.getThreadId() == threadId) {
 				returnPost.add(p);
 			}
 		}

@@ -5,9 +5,9 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -163,7 +163,5 @@ public class Report implements Serializable{
 	public String toString() {
 		return "Report [reportId=" + reportId + ", ip=" + ip + ", date=" + date + ", count=" + count + ", threadId="
 				+ threadId + ", postId=" + postId + "]";
-	}
-	
-	
+	}	
 }
