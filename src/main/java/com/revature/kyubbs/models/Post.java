@@ -42,20 +42,16 @@ public class Post implements Serializable {
 	private String IPAddress;
 	
 	@ManyToOne(targetEntity = AuthUser.class, fetch=FetchType.EAGER)
-    @JoinColumn(name="AUTH_USER_ID", referencedColumnName="AUTH_USER_ID", table="KB_AUTH_USER_LIST")
+    @JoinColumn(name="AUTH_USER_ID", referencedColumnName="AUTH_USER_ID")
 	private Long auth_user_id;
 	
 	@ManyToOne(targetEntity = BoardThread.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="THREAD_ID", referencedColumnName="THREAD_ID", table="KB_THREADS")
+	@JoinColumn(name="THREAD_ID", referencedColumnName="THREAD_ID")
 	@NotNull	
 	private Long thread_id;
-	
-	public Post() {
-		super();
-	}
 
-	public Post(long post_id, String name, @NotNull String content, @NotNull Timestamp start_Date,
-			Timestamp modified_Date, int flag, @NotNull String iPAddress, long auth_user_id, @NotNull long thread_id) {
+	public Post(Long post_id, String name, @NotNull String content, @NotNull Timestamp start_Date,
+			Timestamp modified_Date, int flag, @NotNull String iPAddress, Long auth_user_id, @NotNull Long thread_id) {
 		super();
 		this.post_id = post_id;
 		Name = name;
@@ -67,9 +63,13 @@ public class Post implements Serializable {
 		this.auth_user_id = auth_user_id;
 		this.thread_id = thread_id;
 	}
-	
+
+	public Post() {
+		super();
+	}
+
 	public Post(String name, @NotNull String content, @NotNull Timestamp start_Date, Timestamp modified_Date, int flag,
-			@NotNull String iPAddress, long auth_user_id, @NotNull long thread_id) {
+			@NotNull String iPAddress, Long auth_user_id, @NotNull Long thread_id) {
 		super();
 		Name = name;
 		Content = content;
@@ -81,11 +81,11 @@ public class Post implements Serializable {
 		this.thread_id = thread_id;
 	}
 
-	public long getPost_id() {
+	public Long getPost_id() {
 		return post_id;
 	}
 
-	public void setPost_id(long post_id) {
+	public void setPost_id(Long post_id) {
 		this.post_id = post_id;
 	}
 
@@ -137,19 +137,19 @@ public class Post implements Serializable {
 		IPAddress = iPAddress;
 	}
 
-	public long getAuth_user_id() {
+	public Long getAuth_user_id() {
 		return auth_user_id;
 	}
 
-	public void setAuth_user_id(long auth_user_id) {
+	public void setAuth_user_id(Long auth_user_id) {
 		this.auth_user_id = auth_user_id;
 	}
 
-	public long getThread_id() {
+	public Long getThread_id() {
 		return thread_id;
 	}
 
-	public void setThread_id(long thread_id) {
+	public void setThread_id(Long thread_id) {
 		this.thread_id = thread_id;
 	}
 
@@ -162,10 +162,10 @@ public class Post implements Serializable {
 		result = prime * result + ((Modified_Date == null) ? 0 : Modified_Date.hashCode());
 		result = prime * result + ((Name == null) ? 0 : Name.hashCode());
 		result = prime * result + ((Start_Date == null) ? 0 : Start_Date.hashCode());
-		result = prime * result + (int) (auth_user_id ^ (auth_user_id >>> 32));
+		result = prime * result + ((auth_user_id == null) ? 0 : auth_user_id.hashCode());
 		result = prime * result + flag;
-		result = prime * result + (int) (post_id ^ (post_id >>> 32));
-		result = prime * result + (int) (thread_id ^ (thread_id >>> 32));
+		result = prime * result + ((post_id == null) ? 0 : post_id.hashCode());
+		result = prime * result + ((thread_id == null) ? 0 : thread_id.hashCode());
 		return result;
 	}
 
@@ -203,13 +203,22 @@ public class Post implements Serializable {
 				return false;
 		} else if (!Start_Date.equals(other.Start_Date))
 			return false;
-		if (auth_user_id != other.auth_user_id)
+		if (auth_user_id == null) {
+			if (other.auth_user_id != null)
+				return false;
+		} else if (!auth_user_id.equals(other.auth_user_id))
 			return false;
 		if (flag != other.flag)
 			return false;
-		if (post_id != other.post_id)
+		if (post_id == null) {
+			if (other.post_id != null)
+				return false;
+		} else if (!post_id.equals(other.post_id))
 			return false;
-		if (thread_id != other.thread_id)
+		if (thread_id == null) {
+			if (other.thread_id != null)
+				return false;
+		} else if (!thread_id.equals(other.thread_id))
 			return false;
 		return true;
 	}
@@ -220,5 +229,5 @@ public class Post implements Serializable {
 				+ ", Modified_Date=" + Modified_Date + ", flag=" + flag + ", IPAddress=" + IPAddress + ", auth_user_id="
 				+ auth_user_id + ", thread_id=" + thread_id + "]";
 	}
-
+	
 }

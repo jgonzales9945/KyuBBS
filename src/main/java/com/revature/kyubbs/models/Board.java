@@ -41,7 +41,7 @@ public class Board implements Serializable {
 	private int maxPosts;
 	
 	@ManyToOne(targetEntity = Category.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="CATEGORY_ID", referencedColumnName="CATEGORY_ID", table="KB_CATEGORY")
+	@JoinColumn(name="CATEGORY_ID", referencedColumnName="CATEGORY_ID")
 	@NotNull
 	private Long categoryId;
 

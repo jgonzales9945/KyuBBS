@@ -32,18 +32,14 @@ public class Report implements Serializable{
 	private int count;
 	
 	@ManyToOne(targetEntity = BoardThread.class, fetch=FetchType.EAGER)
-	@JoinColumn(name="THREAD_ID", referencedColumnName="THREAD_ID", table="KB_THREADS")
-	private int threadId;
+	@JoinColumn(name="THREAD_ID", referencedColumnName="THREAD_ID")
+	private Long threadId;
 
 	@ManyToOne(targetEntity = Post.class, fetch=FetchType.EAGER)
-	@JoinColumn(name="POST_ID", referencedColumnName="POST_ID", table="KB_POSTS")
-	private int postId;
+	@JoinColumn(name="POST_ID", referencedColumnName="POST_ID")
+	private Long postId;
 
-	public Report() {
-		super();
-	}
-	
-	public Report(Long reportId, @NotNull String ip, @NotNull Timestamp date, int count, int threadId, int postId) {
+	public Report(Long reportId, @NotNull String ip, @NotNull Timestamp date, int count, Long threadId, Long postId) {
 		super();
 		this.reportId = reportId;
 		this.ip = ip;
@@ -53,13 +49,17 @@ public class Report implements Serializable{
 		this.postId = postId;
 	}
 
-	public Report(@NotNull String ip, @NotNull Timestamp date, int count, int threadId, int postId) {
+	public Report(@NotNull String ip, @NotNull Timestamp date, int count, Long threadId, Long postId) {
 		super();
 		this.ip = ip;
 		this.date = date;
 		this.count = count;
 		this.threadId = threadId;
 		this.postId = postId;
+	}
+
+	public Report() {
+		super();
 	}
 
 	public Long getReportId() {
@@ -94,19 +94,19 @@ public class Report implements Serializable{
 		this.count = count;
 	}
 
-	public int getThreadId() {
+	public Long getThreadId() {
 		return threadId;
 	}
 
-	public void setThreadId(int threadId) {
+	public void setThreadId(Long threadId) {
 		this.threadId = threadId;
 	}
 
-	public int getPostId() {
+	public Long getPostId() {
 		return postId;
 	}
 
-	public void setPostId(int postId) {
+	public void setPostId(Long postId) {
 		this.postId = postId;
 	}
 
@@ -117,9 +117,9 @@ public class Report implements Serializable{
 		result = prime * result + count;
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((ip == null) ? 0 : ip.hashCode());
-		result = prime * result + postId;
+		result = prime * result + ((postId == null) ? 0 : postId.hashCode());
 		result = prime * result + ((reportId == null) ? 0 : reportId.hashCode());
-		result = prime * result + threadId;
+		result = prime * result + ((threadId == null) ? 0 : threadId.hashCode());
 		return result;
 	}
 
@@ -144,14 +144,20 @@ public class Report implements Serializable{
 				return false;
 		} else if (!ip.equals(other.ip))
 			return false;
-		if (postId != other.postId)
+		if (postId == null) {
+			if (other.postId != null)
+				return false;
+		} else if (!postId.equals(other.postId))
 			return false;
 		if (reportId == null) {
 			if (other.reportId != null)
 				return false;
 		} else if (!reportId.equals(other.reportId))
 			return false;
-		if (threadId != other.threadId)
+		if (threadId == null) {
+			if (other.threadId != null)
+				return false;
+		} else if (!threadId.equals(other.threadId))
 			return false;
 		return true;
 	}
@@ -161,6 +167,5 @@ public class Report implements Serializable{
 		return "Report [reportId=" + reportId + ", ip=" + ip + ", date=" + date + ", count=" + count + ", threadId="
 				+ threadId + ", postId=" + postId + "]";
 	}
-	
 	
 }

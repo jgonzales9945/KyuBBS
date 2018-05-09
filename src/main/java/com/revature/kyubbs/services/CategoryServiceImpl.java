@@ -43,9 +43,9 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 
 	@Override
-	public void deleteCategoryById(Category c) {
+	public void deleteCategoryById(Long id) {
 		// TODO Auto-generated method stub
-		repo.delete(c);
+		repo.deleteById(id);
 	}
 
 }

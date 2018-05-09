@@ -27,7 +27,7 @@ public class CategoryController {
 	@Autowired
 	CategoryService service;
 	
-	@GetMapping(value="/{name}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/name/{name}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Category findCategoryByName(@PathVariable("name") String name) {
 		return service.findCategoryByName(name);
 	}
@@ -42,7 +42,7 @@ public class CategoryController {
 		return service.findAllCategories();
 	}
 	
-	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/id/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Category findCategoryById(@PathVariable("id") Long id) {
 		return service.findCategoryById(id);
 	}
@@ -52,8 +52,8 @@ public class CategoryController {
 		return service.updateCategoryById(c);
 	}
 	
-	@DeleteMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-	public void deleteCategory(Category c) {
-		service.deleteCategoryById(c);
+	@DeleteMapping(value="/delete/{id}")
+	public void deleteCategory(Long id) {
+		service.deleteCategoryById(id);
 	}
 }

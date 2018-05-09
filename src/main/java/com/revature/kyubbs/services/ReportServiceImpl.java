@@ -27,12 +27,12 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
-	public Report findReportByPostId(int id) {
+	public Report findReportByPostId(Long id) {
 		return reportRepo.findReportByPostId(id);
 	}
 
 	@Override
-	public Report findReportByThreadId(int id) {
+	public Report findReportByThreadId(Long id) {
 		return reportRepo.findReportByThreadId(id);
 	}
 
