@@ -25,7 +25,7 @@ public class BoardController {
 	}
 
 	@GetMapping(value = "/categoryId/{categoryId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Board> findBoardsByCategoryId(@PathVariable Long categoryId) {
+	public List<Board> findBoardsByCategoryId(@PathVariable("categoryId") Long categoryId) {
 		return boardService.findBoardsByCategoryId(categoryId);
 	}
 	

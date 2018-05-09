@@ -19,15 +19,26 @@ public class PostController {
 	@Autowired
 	private PostService postService;
 	
-	public PostController() {
-		super();
-	}
-
-	@GetMapping(value = "/threadId/{threadId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Post> findPostsByThreadId(@PathVariable Long threadId) {
-		return postService.getAllPostsByThread(threadId);
-	}
-
+//	@GetMapping(value = "/threadId/{threadId}", produces = MediaType.APPLICATION_JSON_VALUE)
+//	public List<Post> findPostByThreadId(@PathVariable Long threadId) {
+//		return postService.findPostByThreadId(threadId);
+//	}
+//	
+//	@GetMapping(value = "/ipAddress/{ipAddress}", produces = MediaType.APPLICATION_JSON_VALUE)
+//	public List<Post> findPostByIpAddress(@PathVariable String ipAddress) {
+//		return postService.findPostByIpAddress(ipAddress);
+//	}
+//	
+//	@GetMapping(value = "/userId/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+//	public List<Post> findPostByUserId(@PathVariable Long userId) {
+//		return postService.findPostByUserId(userId);
+//	}
+//	
+//	@GetMapping(value = "/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+//	public List<Post> findPostByName(@PathVariable String name) {
+//		return postService.findPostByName(name);
+//	}
+	
 	@GetMapping(value = "/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Post findPostById(@PathVariable Long id) {
 		return postService.findPostById(id);
@@ -43,8 +54,8 @@ public class PostController {
 		postService.updatePost(post);
 	}
 	
-	@DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void deletePost(@Valid @RequestBody Post post) {
-		postService.deletePost(post);
+	@DeleteMapping(value="/delete/{id}")
+	public void deletePost(Long id) {
+		postService.deletePostById(id);
 	}
 }

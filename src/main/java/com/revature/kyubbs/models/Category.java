@@ -22,7 +22,7 @@ public class Category implements Serializable{
 	@Id
 	@Column(name="CATEGORY_ID")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long categoryId;
+	private Long catId;
 	
 	@Column(name="CATEGORY_NAME")
 	@NotNull
@@ -30,7 +30,7 @@ public class Category implements Serializable{
 
 	public Category(Long categoryId, @NotNull String name) {
 		super();
-		this.categoryId = categoryId;
+		this.catId = categoryId;
 		this.name = name;
 	}
 
@@ -44,11 +44,11 @@ public class Category implements Serializable{
 	}
 
 	public Long getCategoryId() {
-		return categoryId;
+		return catId;
 	}
 
 	public void setCategoryId(Long categoryId) {
-		this.categoryId = categoryId;
+		this.catId = categoryId;
 	}
 
 	public String getName() {
@@ -63,7 +63,7 @@ public class Category implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((categoryId == null) ? 0 : categoryId.hashCode());
+		result = prime * result + ((catId == null) ? 0 : catId.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -77,10 +77,10 @@ public class Category implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Category other = (Category) obj;
-		if (categoryId == null) {
-			if (other.categoryId != null)
+		if (catId == null) {
+			if (other.catId != null)
 				return false;
-		} else if (!categoryId.equals(other.categoryId))
+		} else if (!catId.equals(other.catId))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -92,6 +92,6 @@ public class Category implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Category [categoryId=" + categoryId + ", name=" + name + "]";
+		return "Category [categoryId=" + catId + ", name=" + name + "]";
 	}
 }
