@@ -16,10 +16,10 @@ public class AuthUser implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="AUTH_USER_ID")
+	@Column(name = "AUTH_USER_ID")
 	private Long userId;
 
-	@Column(name="USER_NAME")
+	@Column(name = "USER_NAME")
 	@NotNull
 	private String username;
 

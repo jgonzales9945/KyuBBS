@@ -55,6 +55,5 @@ public class ReportServiceImpl implements ReportService {
 	public void deleteReportById(Report r) {
 
 		reportRepo.delete(r);
-
 	}
 }
