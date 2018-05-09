@@ -3,20 +3,26 @@ package com.revature.kyubbs.models;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name="KB_POSTS")
+@Table(name = "KB_POSTS")
 public class Post implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+<<<<<<< HEAD
 	@Column(name="POST_ID")
 	private Long postId;
 	
@@ -66,6 +72,45 @@ public class Post implements Serializable {
 
 	public Post(String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate, int flag,
 			@NotNull String ipAddress, Long userId, @NotNull Long threadId) {
+=======
+	@Column(name = "POST_ID")
+	private Long id;
+
+	@Column(name = "POST_NAME")
+	private String name;
+
+	@Column(name = "POST_CONTENT")
+	@NotNull
+	private String content;
+
+	@Column(name = "POST_START_DATE")
+	@NotNull
+	private Timestamp startDate;
+
+	@Column(name = "POST_MODIFIED_DATE")
+	private Timestamp modifiedDate;
+
+	@Column(name = "POST_FLAG")
+	private int flag;
+
+	@Column(name = "POST_IP_ADDRESS")
+	@NotNull
+	private String ipAddress;
+
+	@Column(name = "AUTH_USER_ID")
+	private long authUserId;
+
+	@Column(name = "THREAD_ID")
+	@NotNull
+	private long threadId;
+
+	public Post() {
+		super();
+	}
+
+	public Post(String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate, int flag,
+			@NotNull String ipAddress, long authUserId, @NotNull long threadId) {
+>>>>>>> 4739b1d358a56c5b664eb3f2472072d6e47c0d20
 		super();
 		this.name = name;
 		this.content = content;
@@ -73,6 +118,7 @@ public class Post implements Serializable {
 		this.modifiedDate = modifiedDate;
 		this.flag = flag;
 		this.ipAddress = ipAddress;
+<<<<<<< HEAD
 		this.userId = userId;
 		this.threadId = threadId;
 	}
@@ -87,6 +133,32 @@ public class Post implements Serializable {
 
 	public void setPostId(Long postId) {
 		this.postId = postId;
+=======
+		this.authUserId = authUserId;
+		this.threadId = threadId;
+	}
+
+	public Post(long id, String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate,
+			int flag, @NotNull String ipAddress, long authUserId, @NotNull long threadId) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.content = content;
+		this.startDate = startDate;
+		this.modifiedDate = modifiedDate;
+		this.flag = flag;
+		this.ipAddress = ipAddress;
+		this.authUserId = authUserId;
+		this.threadId = threadId;
+	}
+
+	public long getid() {
+		return id;
+	}
+
+	public void setid(long id) {
+		this.id = id;
+>>>>>>> 4739b1d358a56c5b664eb3f2472072d6e47c0d20
 	}
 
 	public String getName() {
@@ -131,6 +203,7 @@ public class Post implements Serializable {
 
 	public String getIpAddress() {
 		return ipAddress;
+<<<<<<< HEAD
 	}
 
 	public void setIpAddress(String ipAddress) {
@@ -221,13 +294,40 @@ public class Post implements Serializable {
 		} else if (!userId.equals(other.userId))
 			return false;
 		return true;
+=======
+	}
+
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
+	}
+
+	public long getAuthUserId() {
+		return authUserId;
+	}
+
+	public void setAuthUserId(long authUserId) {
+		this.authUserId = authUserId;
+	}
+
+	public long getThreadId() {
+		return threadId;
+	}
+
+	public void setThreadId(long threadId) {
+		this.threadId = threadId;
+>>>>>>> 4739b1d358a56c5b664eb3f2472072d6e47c0d20
 	}
 
 	@Override
 	public String toString() {
+<<<<<<< HEAD
 		return "Post [postId=" + postId + ", name=" + name + ", content=" + content + ", startDate=" + startDate
 				+ ", modifiedDate=" + modifiedDate + ", flag=" + flag + ", ipAddress=" + ipAddress + ", userId="
 				+ userId + ", threadId=" + threadId + "]";
+=======
+		return "Post [id=" + id + ", name=" + name + ", content=" + content + ", startDate=" + startDate
+				+ ", modifiedDate=" + modifiedDate + ", flag=" + flag + ", ipAddress=" + ipAddress + ", authUserId="
+				+ authUserId + ", threadId=" + threadId + "]";
+>>>>>>> 4739b1d358a56c5b664eb3f2472072d6e47c0d20
 	}
-	
 }

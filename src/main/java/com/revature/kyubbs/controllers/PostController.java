@@ -19,6 +19,7 @@ public class PostController {
 	@Autowired
 	private PostService postService;
 	
+<<<<<<< HEAD
 //	@GetMapping(value = "/threadId/{threadId}", produces = MediaType.APPLICATION_JSON_VALUE)
 //	public List<Post> findPostByThreadId(@PathVariable Long threadId) {
 //		return postService.findPostByThreadId(threadId);
@@ -39,6 +40,17 @@ public class PostController {
 //		return postService.findPostByName(name);
 //	}
 	
+=======
+	public PostController() {
+		super();
+	}
+
+	@GetMapping(value = "/threadId/{threadId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Post> findPostsByThreadId(@PathVariable Long threadId) {
+		return postService.getAllPostsByThreadId(threadId);
+	}
+
+>>>>>>> 4739b1d358a56c5b664eb3f2472072d6e47c0d20
 	@GetMapping(value = "/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Post findPostById(@PathVariable Long id) {
 		return postService.findPostById(id);
