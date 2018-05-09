@@ -40,8 +40,8 @@ public class Board implements Serializable {
 	@NotNull
 	private int maxPosts;
 	
-	@ManyToOne(targetEntity = Category.class)
-	@JoinColumn(name="CATEGORY_ID")
+	@ManyToOne(targetEntity = Category.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="CATEGORY_ID", referencedColumnName="CATEGORY_ID", table="KB_CATEGORY")
 	@NotNull
 	private Long categoryId;
 

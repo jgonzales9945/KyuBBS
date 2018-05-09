@@ -31,10 +31,12 @@ public class Report implements Serializable{
 	@Column(name="REPORT_COUNT")
 	private int count;
 	
-	@Column(name="THREAD_ID")
+	@ManyToOne(targetEntity = BoardThread.class, fetch=FetchType.EAGER)
+	@JoinColumn(name="THREAD_ID", referencedColumnName="THREAD_ID", table="KB_THREADS")
 	private int threadId;
-	
-	@Column(name="POST_ID")
+
+	@ManyToOne(targetEntity = Post.class, fetch=FetchType.EAGER)
+	@JoinColumn(name="POST_ID", referencedColumnName="POST_ID", table="KB_POSTS")
 	private int postId;
 
 	public Report() {

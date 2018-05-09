@@ -51,13 +51,13 @@ public class BoardThread {
 	@NotNull
 	private String ipAddress;
 	
-	@ManyToOne(targetEntity = AuthUser.class)
-    @JoinColumn(name="AUTH_USER_ID")
+	@ManyToOne(targetEntity = AuthUser.class, cascade = CascadeType.DETACH, fetch=FetchType.EAGER)
+    @JoinColumn(name="AUTH_USER_ID", referencedColumnName="AUTH_USER_ID", table="KB_AUTH_USER_LIST")
     @NotNull
     private Long authenticatedUserId;
     
-    @ManyToOne(targetEntity = Board.class)
-    @JoinColumn(name="BOARD_ID")
+    @ManyToOne(targetEntity = Board.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="THREAD_ID", referencedColumnName="BOARD_ID", table="KB_BOARDS")
     @NotNull
     private Long boardId;
 	
