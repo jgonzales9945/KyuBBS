@@ -32,23 +32,23 @@ public class ReportController {
 		return service.findAllReports();
 	}
 
-	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Report findReportById(@PathVariable("id") Long id) {
 		return service.findReportById(id);
 	}
 	
-	@GetMapping(value = "/{ip}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/ip/{ip}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Report findReportByIp(@PathVariable("ip") String ip) {
 		return service.findReportByIp(ip);
 	}
 
-	@GetMapping(value = "/{postid}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Report findReportByPostId(@PathVariable("postid") int id) {
+	@GetMapping(value = "/postid/{postid}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Report findReportByPostId(@PathVariable("postid") Long id) {
 		return service.findReportByPostId(id);
 	}
 
-	@GetMapping(value = "/{threadid}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Report findReportByThreadId(@PathVariable("threadid") int id) {
+	@GetMapping(value = "/threadid/{threadid}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Report findReportByThreadId(@PathVariable("threadid") Long id) {
 		return service.findReportByThreadId(id);
 	}
 

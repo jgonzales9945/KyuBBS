@@ -16,7 +16,7 @@ public class AuthUser implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="AUTHUSER_ID")
+	@Column(name="AUTH_USER_ID")
 	private Long userId;
 
 	@Column(name="USER_NAME")

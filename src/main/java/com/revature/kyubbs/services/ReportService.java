@@ -10,9 +10,9 @@ public interface ReportService {
 
 	public Report findReportByIp(String ip);
 
-	public Report findReportByPostId(int id);
+	public Report findReportByPostId(Long id);
 
-	public Report findReportByThreadId(int id);
+	public Report findReportByThreadId(Long id);
 
 	public Report addReport(Report r);
 

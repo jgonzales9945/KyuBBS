@@ -67,19 +67,6 @@ public class Post implements Serializable {
 		this.authenticatedUserId = authenticatedUserId;
 		this.threadId = threadId;
 	}
-
-	public Post(String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate, int flag,
-			@NotNull String ipAddress, Long authenticatedUserId, @NotNull Long threadId) {
-		super();
-		this.name = name;
-		this.content = content;
-		this.startDate = startDate;
-		this.modifiedDate = modifiedDate;
-		this.flag = flag;
-		this.ipAddress = ipAddress;
-		this.authenticatedUserId = authenticatedUserId;
-		this.threadId = threadId;
-	}
 	
 	public Long getPostId() {
 		return id;
@@ -129,12 +116,8 @@ public class Post implements Serializable {
 		this.flag = flag;
 	}
 
-	public String getIpAddress() {
+	public String getIPAddress() {
 		return ipAddress;
-	}
-
-	public void setIpAddress(String ipAddress) {
-		this.ipAddress = ipAddress;
 	}
 
 	public Long getAuthenticatedUserId() {
