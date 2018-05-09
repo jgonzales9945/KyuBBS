@@ -5,6 +5,7 @@ com\revature\kyubbs\controllers\ReportController.class
 com\revature\kyubbs\models\Board.class
 com\revature\kyubbs\services\BoardService.class
 com\revature\kyubbs\Driver.class
+com\revature\kyubbs\services\KBUserServiceImp.class
 com\revature\kyubbs\services\ReportServiceImpl.class
 com\revature\kyubbs\models\BoardThread.class
 com\revature\kyubbs\models\Category.class
@@ -19,14 +20,18 @@ com\revature\kyubbs\services\BannedIpsService.class
 com\revature\kyubbs\models\Post.class
 com\revature\kyubbs\controllers\BoardThreadController.class
 com\revature\kyubbs\controllers\CategoryController.class
+com\revature\kyubbs\models\KBUser.class
 com\revature\kyubbs\models\AuthUser.class
 com\revature\kyubbs\services\BoardThreadService.class
 com\revature\kyubbs\services\CategoryServiceImpl.class
 com\revature\kyubbs\models\Report.class
+com\revature\kyubbs\controllers\KBUserController.class
 com\revature\kyubbs\controllers\BoardController.class
 com\revature\kyubbs\controllers\UserTypeController.class
+com\revature\kyubbs\services\KBUserService.class
 com\revature\kyubbs\services\PostServiceImpl.class
 com\revature\kyubbs\repositories\ReportRepository.class
+com\revature\kyubbs\repositories\KBUserRespository.class
 com\revature\kyubbs\services\BannedIpsServiceImpl.class
 com\revature\kyubbs\services\ReportService.class
 com\revature\kyubbs\repositories\BannedIPRepository.class
