@@ -60,17 +60,18 @@ public class BoardThread implements Serializable {
 	@Column(name = "THREAD_IP_ADDRESS")
 	@NotNull
 	private String ipAddress;
+	
+	@ManyToOne(targetEntity = AuthUser.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinColumn(name="AUTH_USER_ID", referencedColumnName="AUTH_USER_ID")
+    @NotNull
+    private Long authenticatedUserId;
+    
 
-	@ManyToOne(targetEntity = AuthUser.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-	@JoinColumn(name = "AUTH_USER_ID", referencedColumnName = "AUTH_USER_ID")
-	@NotNull
-	private Long authenticatedUserId;
-
-	@ManyToOne(targetEntity = Board.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "BOARD_ID", referencedColumnName = "BOARD_ID")
-	@NotNull
-	private Long boardId;
-
+@ManyToOne(targetEntity = Board.class)
+@JoinColumn(name="BOARD_ID")
+    @NotNull
+    private Long boardId;
+	
 	public BoardThread() {
 		super();
 	}
@@ -182,14 +183,17 @@ public class BoardThread implements Serializable {
 		return authenticatedUserId;
 	}
 
+
 	public void setAuthenticatedUserId(Long authenticatedUserId) {
 		this.authenticatedUserId = authenticatedUserId;
 	}
+
 
 	public Long getBoardId() {
 		return boardId;
 	}
 
+	
 	public void setBoardId(Long boardId) {
 		this.boardId = boardId;
 	}

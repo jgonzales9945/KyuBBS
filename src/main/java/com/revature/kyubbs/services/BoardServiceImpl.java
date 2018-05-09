@@ -45,7 +45,7 @@ public class BoardServiceImpl implements BoardService {
 	public Board addBoard(Board board) {
 
 		for (Board b : findAllBoards()) {
-			if (b.getName().equals(b.getName())) {
+			if (board.getName().equals(b.getName())) {
 				return null;
 			}
 		}

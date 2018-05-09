@@ -3,7 +3,15 @@ package com.revature.kyubbs.models;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
@@ -40,8 +48,9 @@ public class Board implements Serializable {
 	@NotNull
 	private int maxPosts;
 	
-	@ManyToOne(targetEntity = Category.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="CATEGORY_ID", referencedColumnName="CATEGORY_ID")
+
+	@ManyToOne(targetEntity = Category.class, fetch=FetchType.EAGER)
+	@JoinColumn(name="CATEGORY_ID", table="KB_CATEGORY")
 	@NotNull
 	private Long categoryId;
 
@@ -49,7 +58,9 @@ public class Board implements Serializable {
 		super();
 	}
 
-	public Board(Long id, String name, String desc, Timestamp startDate, int maxThreads, int maxPosts, @NotNull Long categoryId) {
+
+	public Board(Long id, String name, String desc, Timestamp startDate, int maxThreads, int maxPosts, Long categoryId) {
+
 		super();
 		this.id = id;
 		this.name = name;
@@ -60,7 +71,9 @@ public class Board implements Serializable {
 		this.categoryId = categoryId;
 	}
 
-	public Board(String name, String desc, Timestamp startDate, int maxThreads, int maxPosts, @NotNull Long categoryId) {
+
+	public Board(String name, String desc, Timestamp startDate, int maxThreads, int maxPosts, Long categoryId) {
+
 		super();
 		this.name = name;
 		this.desc = desc;
@@ -118,13 +131,17 @@ public class Board implements Serializable {
 		this.maxPosts = maxPosts;
 	}
 
-	public @NotNull Long getCategoryId() {
+
+	public Long getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(@NotNull Long categoryId) {
+	public void setCategoryId(Long categoryId) {
+
 		this.categoryId = categoryId;
 	}
+
+
 
 	@Override
 	public int hashCode() {

@@ -54,7 +54,7 @@ public class BoardController {
 		return boardService.updateBoard(board);
 	}
 	
-	@DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value = "/id/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void deleteBoardById(@PathVariable Long id) {
 		boardService.deleteBoard(boardService.findBoardById(id));
 	}
