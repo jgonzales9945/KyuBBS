@@ -9,19 +9,24 @@ import { Alt1Component } from './components/alt1/alt1.component';
 import { AppRoutingModule } from './app-routing.module';
 import { OriginComponent } from './components/origin/origin.component';
 import { LandingComponent } from './landing/landing.component';
+import { CategoryService } from './services/category.service';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
     Alt1Component,
     OriginComponent,
-    LandingComponent
+    LandingComponent,
+
   ],
   imports: [NgbModule.forRoot(),
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

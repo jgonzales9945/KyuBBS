@@ -1,15 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CategoryService } from '../services/category.service';
+import { Category } from '../models/Category';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.css']
+  styleUrls: ['./landing.component.css'],
+
 })
 export class LandingComponent implements OnInit {
 
-  constructor() {    }
+
+
+
+  constructor(private cservice: CategoryService, private router: Router) {    }
 
   ngOnInit() {
+    
+  this.cservice.allCategories().subscribe(categories =>
+  
+  {console.log(categories)});
+
     let activeFace = '';
     window.setInterval(function(){
       let cubix = document.getElementsByClassName("cube");
@@ -25,7 +36,7 @@ export class LandingComponent implements OnInit {
     let dice = Math.floor(Math.random() * 5); 
     
     let newFace = 'show-'+dice;
-    console.log(dice);
+    //console.log(dice);
     
     
      cubix[i].classList.add(newFace);
