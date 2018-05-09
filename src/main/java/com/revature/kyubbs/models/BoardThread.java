@@ -1,92 +1,76 @@
 package com.revature.kyubbs.models;
 
-
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-<<<<<<< HEAD
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-=======
-import javax.persistence.*;
->>>>>>> d1c30c2564938199c1f9bdb0ae972a76843e5a93
 import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name="KB_THREADS")
-
+@Table(name = "KB_THREADS")
 public class BoardThread implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="THREAD_ID")
+	@Column(name = "THREAD_ID")
 	private Long id;
-	
-	@Column(name="THREAD_TITLE")
+
+	@Column(name = "THREAD_TITLE")
 	@NotNull
 	private String title;
-	
-	@Column(name="THREAD_NAME")
+
+	@Column(name = "THREAD_NAME")
 	@NotNull
 	private String name;
-	
-	@Column(name="THREAD_SUBJECT")
+
+	@Column(name = "THREAD_SUBJECT")
 	@NotNull
 	private String subject;
-	
-	@Column(name="THREAD_CONTENT")
+
+	@Column(name = "THREAD_CONTENT")
 	@NotNull
 	private String content;
-	
-	@Column(name="THREAD_START_DATE")
+
+	@Column(name = "THREAD_START_DATE")
 	@NotNull
 	private Timestamp startDate;
-	
-	@Column(name="THREAD_MODIFIED_DATE")
+
+	@Column(name = "THREAD_MODIFIED_DATE")
 	@NotNull
 	private Timestamp modifiedDate;
-	
-	@Column(name="THREAD_FLAG")
+
+	@Column(name = "THREAD_FLAG")
 	@NotNull
 	private int flag;
-	
-	@Column(name="THREAD_IP_ADDRESS")
+
+	@Column(name = "THREAD_IP_ADDRESS")
 	@NotNull
 	private String ipAddress;
-	
-<<<<<<< HEAD
-	@ManyToOne(targetEntity = AuthUser.class)
-	@JoinColumn(name="AUTH_USER_ID")
+
+	@ManyToOne(targetEntity = AuthUser.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "AUTH_USER_ID", referencedColumnName = "AUTH_USER_ID")
 	@NotNull
 	private Long authenticatedUserId;
-	
-	@ManyToOne(targetEntity = Board.class)
-	@JoinColumn(name="BOARD_ID")
+
+	@ManyToOne(targetEntity = Board.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "BOARD_ID", referencedColumnName = "BOARD_ID")
 	@NotNull
 	private Long boardId;
-=======
-	@ManyToOne(targetEntity = AuthUser.class, cascade = CascadeType.DETACH, fetch=FetchType.EAGER)
-    @JoinColumn(name="AUTH_USER_ID", referencedColumnName="AUTH_USER_ID", table="KB_AUTH_USER_LIST")
-    @NotNull
-    private Long authenticatedUserId;
-    
-    @ManyToOne(targetEntity = Board.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="THREAD_ID", referencedColumnName="BOARD_ID", table="KB_BOARDS")
-    @NotNull
-    private Long boardId;
->>>>>>> d1c30c2564938199c1f9bdb0ae972a76843e5a93
-	
+
 	public BoardThread() {
 		super();
 	}

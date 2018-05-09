@@ -22,11 +22,8 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-<<<<<<< HEAD
-	public List<Post> getAllPostsByThread(Long threadId) {
-=======
 	public List<Post> getAllPostsByThreadId(Long threadId) {
->>>>>>> d1c30c2564938199c1f9bdb0ae972a76843e5a93
+
 		List<Post> temp = postrepo.findAll();
 		List<Post> returnPost = new ArrayList<Post>();
 
