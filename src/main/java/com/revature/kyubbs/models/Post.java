@@ -140,16 +140,28 @@ public class Post implements Serializable {
 		this.ipAddress = ipAddress;
 	}
 
-	public long getAuthUserId() {
+	public Long getAuthUserId() {
 		return authUserId;
+
 	}
 
-	public void setAuthUserId(long authUserId) {
-		this.authUserId = authUserId;
+
+	public void setAuthenticatedUserId(Long authenticatedUserId) {
+		this.authUserId = authenticatedUserId;
 	}
 
-	public long getThreadId() {
+	public Long getThreadId() {
 		return threadId;
+	}
+
+	public void setThreadId(Long threadId) {
+		this.threadId = threadId;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+
+
 	}
 
 	public void setThreadId(long threadId) {

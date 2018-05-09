@@ -3,6 +3,7 @@ package com.revature.kyubbs.models;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,8 +50,9 @@ public class Board implements Serializable {
 	private int maxPosts;
 	
 
-	@ManyToOne(targetEntity = Category.class, fetch=FetchType.EAGER)
-	@JoinColumn(name="CATEGORY_ID", table="KB_CATEGORY")
+
+	@ManyToOne(targetEntity = Category.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="CATEGORY_ID", referencedColumnName="CATEGORY_ID")
 	@NotNull
 	private Long categoryId;
 

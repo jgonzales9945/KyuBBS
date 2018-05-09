@@ -67,8 +67,8 @@ public class BoardThread implements Serializable {
     private Long authenticatedUserId;
     
 
-@ManyToOne(targetEntity = Board.class)
-@JoinColumn(name="BOARD_ID")
+    @ManyToOne(targetEntity = Board.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="BOARD_ID", referencedColumnName="BOARD_ID")
     @NotNull
     private Long boardId;
 	
