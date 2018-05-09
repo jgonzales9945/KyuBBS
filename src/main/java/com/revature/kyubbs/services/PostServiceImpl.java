@@ -22,12 +22,12 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<Post> getAllPostsByThread(Long thread_id) {
+	public List<Post> getAllPostsByThreadId(Long threadId) {
 		List<Post> temp = postrepo.findAll();
 		List<Post> returnPost = new ArrayList<Post>();
 
 		for (Post p : temp) {
-			if (p.getThread_id() == thread_id) {
+			if (p.getThreadId() == threadId) {
 				returnPost.add(p);
 			}
 		}

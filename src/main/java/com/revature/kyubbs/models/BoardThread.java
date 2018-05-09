@@ -1,6 +1,7 @@
 package com.revature.kyubbs.models;
 
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.*;
@@ -12,8 +13,10 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="KB_THREADS")
 
-public class BoardThread {
+public class BoardThread implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="THREAD_ID")

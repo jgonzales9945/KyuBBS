@@ -18,107 +18,107 @@ public class Post implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="POST_ID")
-	private Long post_id;
+	private Long id;
 	
 	@Column(name="POST_NAME")
-	private String Name;
+	private String name;
 	
 	@Column(name="POST_CONTENT")
 	@NotNull	
-	private String Content;
+	private String content;
 	
 	@Column(name="POST_START_DATE")
 	@NotNull	
-	private Timestamp Start_Date;
+	private Timestamp startDate;
 
 	@Column(name="POST_MODIFIED_DATE")
-	private Timestamp Modified_Date;
+	private Timestamp modifiedDate;
 	
 	@Column(name="POST_FLAG")
 	private int flag;
 
 	@Column(name="POST_IP_ADDRESS")
 	@NotNull	
-	private String IPAddress;
+	private String ipAddress;
 	
 	@ManyToOne(targetEntity = AuthUser.class, fetch=FetchType.EAGER)
     @JoinColumn(name="AUTH_USER_ID", referencedColumnName="AUTH_USER_ID", table="KB_AUTH_USER_LIST")
-	private Long auth_user_id;
+	private Long authenticatedUserId;
 	
 	@ManyToOne(targetEntity = BoardThread.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="THREAD_ID", referencedColumnName="THREAD_ID", table="KB_THREADS")
 	@NotNull	
-	private Long thread_id;
+	private Long threadId;
 	
 	public Post() {
 		super();
 	}
 
-	public Post(long post_id, String name, @NotNull String content, @NotNull Timestamp start_Date,
-			Timestamp modified_Date, int flag, @NotNull String iPAddress, long auth_user_id, @NotNull long thread_id) {
+	public Post(Long postId, String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate,
+			int flag, @NotNull String ipAddress, Long authenticatedUserId, @NotNull Long threadId) {
 		super();
-		this.post_id = post_id;
-		Name = name;
-		Content = content;
-		Start_Date = start_Date;
-		Modified_Date = modified_Date;
+		this.id = postId;
+		this.name = name;
+		this.content = content;
+		this.startDate = startDate;
+		this.modifiedDate = modifiedDate;
 		this.flag = flag;
-		IPAddress = iPAddress;
-		this.auth_user_id = auth_user_id;
-		this.thread_id = thread_id;
+		this.ipAddress = ipAddress;
+		this.authenticatedUserId = authenticatedUserId;
+		this.threadId = threadId;
+	}
+
+	public Post(String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate, int flag,
+			@NotNull String ipAddress, Long authenticatedUserId, @NotNull Long threadId) {
+		super();
+		this.name = name;
+		this.content = content;
+		this.startDate = startDate;
+		this.modifiedDate = modifiedDate;
+		this.flag = flag;
+		this.ipAddress = ipAddress;
+		this.authenticatedUserId = authenticatedUserId;
+		this.threadId = threadId;
 	}
 	
-	public Post(String name, @NotNull String content, @NotNull Timestamp start_Date, Timestamp modified_Date, int flag,
-			@NotNull String iPAddress, long auth_user_id, @NotNull long thread_id) {
-		super();
-		Name = name;
-		Content = content;
-		Start_Date = start_Date;
-		Modified_Date = modified_Date;
-		this.flag = flag;
-		IPAddress = iPAddress;
-		this.auth_user_id = auth_user_id;
-		this.thread_id = thread_id;
+	public Long getPostId() {
+		return id;
 	}
 
-	public long getPost_id() {
-		return post_id;
-	}
-
-	public void setPost_id(long post_id) {
-		this.post_id = post_id;
+	public void setPostId(Long postId) {
+		this.id = postId;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getContent() {
-		return Content;
+		return content;
 	}
 
 	public void setContent(String content) {
-		Content = content;
+		this.content = content;
 	}
 
-	public Timestamp getStart_Date() {
-		return Start_Date;
+	public Timestamp getStartDate() {
+		return startDate;
 	}
 
-	public void setStart_Date(Timestamp start_Date) {
-		Start_Date = start_Date;
+	public void setStartDate(Timestamp startDate) {
+		this.startDate = startDate;
 	}
 
-	public Timestamp getModified_Date() {
-		return Modified_Date;
+	public Timestamp getModifiedDate() {
+		return modifiedDate;
 	}
 
-	public void setModified_Date(Timestamp modified_Date) {
-		Modified_Date = modified_Date;
+	public void setModifiedDate(Timestamp modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 
 	public int getFlag() {
@@ -129,43 +129,47 @@ public class Post implements Serializable {
 		this.flag = flag;
 	}
 
-	public String getIPAddress() {
-		return IPAddress;
+	public String getIpAddress() {
+		return ipAddress;
 	}
 
-	public void setIPAddress(String iPAddress) {
-		IPAddress = iPAddress;
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
 	}
 
-	public long getAuth_user_id() {
-		return auth_user_id;
+	public Long getAuthenticatedUserId() {
+		return authenticatedUserId;
 	}
 
-	public void setAuth_user_id(long auth_user_id) {
-		this.auth_user_id = auth_user_id;
+	public void setAuthenticatedUserId(Long authenticatedUserId) {
+		this.authenticatedUserId = authenticatedUserId;
 	}
 
-	public long getThread_id() {
-		return thread_id;
+	public Long getThreadId() {
+		return threadId;
 	}
 
-	public void setThread_id(long thread_id) {
-		this.thread_id = thread_id;
+	public void setThreadId(Long threadId) {
+		this.threadId = threadId;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Content == null) ? 0 : Content.hashCode());
-		result = prime * result + ((IPAddress == null) ? 0 : IPAddress.hashCode());
-		result = prime * result + ((Modified_Date == null) ? 0 : Modified_Date.hashCode());
-		result = prime * result + ((Name == null) ? 0 : Name.hashCode());
-		result = prime * result + ((Start_Date == null) ? 0 : Start_Date.hashCode());
-		result = prime * result + (int) (auth_user_id ^ (auth_user_id >>> 32));
+		result = prime * result + ((content == null) ? 0 : content.hashCode());
+		result = prime * result + ((ipAddress == null) ? 0 : ipAddress.hashCode());
+		result = prime * result + ((modifiedDate == null) ? 0 : modifiedDate.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+		result = prime * result + (int) (authenticatedUserId ^ (authenticatedUserId >>> 32));
 		result = prime * result + flag;
-		result = prime * result + (int) (post_id ^ (post_id >>> 32));
-		result = prime * result + (int) (thread_id ^ (thread_id >>> 32));
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + (int) (threadId ^ (threadId >>> 32));
 		return result;
 	}
 
@@ -178,47 +182,48 @@ public class Post implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Post other = (Post) obj;
-		if (Content == null) {
-			if (other.Content != null)
+		if (content == null) {
+			if (other.content != null)
 				return false;
-		} else if (!Content.equals(other.Content))
+		} else if (!content.equals(other.content))
 			return false;
-		if (IPAddress == null) {
-			if (other.IPAddress != null)
+		if (ipAddress == null) {
+			if (other.ipAddress != null)
 				return false;
-		} else if (!IPAddress.equals(other.IPAddress))
+		} else if (!ipAddress.equals(other.ipAddress))
 			return false;
-		if (Modified_Date == null) {
-			if (other.Modified_Date != null)
+		if (modifiedDate == null) {
+			if (other.modifiedDate != null)
 				return false;
-		} else if (!Modified_Date.equals(other.Modified_Date))
+		} else if (!modifiedDate.equals(other.modifiedDate))
 			return false;
-		if (Name == null) {
-			if (other.Name != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!Name.equals(other.Name))
+		} else if (!name.equals(other.name))
 			return false;
-		if (Start_Date == null) {
-			if (other.Start_Date != null)
+		if (startDate == null) {
+			if (other.startDate != null)
 				return false;
-		} else if (!Start_Date.equals(other.Start_Date))
+		} else if (!startDate.equals(other.startDate))
 			return false;
-		if (auth_user_id != other.auth_user_id)
+		if (authenticatedUserId != other.authenticatedUserId)
 			return false;
 		if (flag != other.flag)
 			return false;
-		if (post_id != other.post_id)
+		if (id != other.id)
 			return false;
-		if (thread_id != other.thread_id)
+		if (threadId != other.threadId)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Post [post_id=" + post_id + ", Name=" + Name + ", Content=" + Content + ", Start_Date=" + Start_Date
-				+ ", Modified_Date=" + Modified_Date + ", flag=" + flag + ", IPAddress=" + IPAddress + ", auth_user_id="
-				+ auth_user_id + ", thread_id=" + thread_id + "]";
+		return "Post [postId=" + id + ", name=" + name + ", content=" + content + ", startDate=" + startDate
+				+ ", modifiedDate=" + modifiedDate + ", flag=" + flag + ", ipAddress=" + ipAddress
+				+ ", authenticatedUserId=" + authenticatedUserId + ", threadId=" + threadId + "]";
 	}
+	
 
 }
