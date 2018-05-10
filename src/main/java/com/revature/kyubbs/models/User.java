@@ -27,7 +27,7 @@ public class User implements Serializable{
 	@NotNull
 	private String password;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="USER_TYPE_ID")
 	private UserType userType;
 

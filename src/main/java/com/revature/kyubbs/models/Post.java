@@ -41,11 +41,11 @@ public class Post implements Serializable {
 	@NotNull	
 	private String ipAddress;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="USER_ID")
 	private User userId;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="THREAD_ID")
 	@NotNull	
 	private BoardThread threadId;

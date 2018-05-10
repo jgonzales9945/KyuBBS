@@ -21,7 +21,7 @@ import com.revature.kyubbs.services.CategoryService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/categories")
 public class CategoryController {
 
 	@Autowired

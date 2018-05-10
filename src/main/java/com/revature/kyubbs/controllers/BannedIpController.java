@@ -13,7 +13,7 @@ import com.revature.kyubbs.services.BannedIpService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/bannedip")
+@RequestMapping("/bannedips")
 public class BannedIpController {
 	
 	@Autowired

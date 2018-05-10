@@ -56,12 +56,12 @@ public class BoardThread implements Serializable{
 	@NotNull
 	private String ipAddress;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="USER_ID")
 	@NotNull
 	private User authenticatedUserId;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="BOARD_ID")
 	@NotNull
 	private Board boardId;

@@ -40,7 +40,7 @@ public class Board implements Serializable {
 	@NotNull
 	private int maxPosts;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="CATEGORY_ID")
 	@NotNull
 	private Category categoryId;
