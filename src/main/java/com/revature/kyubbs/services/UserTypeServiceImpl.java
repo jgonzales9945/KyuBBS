@@ -14,35 +14,36 @@ import com.revature.kyubbs.repositories.UserTypeRepository;
 public class UserTypeServiceImpl implements UserTypeService{
 
 	@Autowired
-	UserTypeRepository repo;
-
+	UserTypeRepository userTypeRepo;
+	
 	@Override
-	public UserType findUserTypeByUserAccount(String userAccount) {
-		return repo.findUserTypeByUserAccount(userAccount);
+	public UserType findUserTypeByAccount(String account) {
+		return userTypeRepo.findUserTypeByAccount(account);
 	}
 
 	@Override
-	public List<UserType> findAllUserType() {
-		return repo.findAll();
+	public UserType addUserType(UserType type) {
+		return userTypeRepo.save(type);
 	}
 
 	@Override
-	public UserType addUserType(UserType a) {
-		return repo.save(a);
+	public List<UserType> findAllUserTypes() {
+		return userTypeRepo.findAll();
 	}
 
 	@Override
 	public UserType findUserTypeById(Long id) {
-		return repo.getOne(id);
+		return userTypeRepo.getOne(id);
 	}
 
 	@Override
-	public UserType updateUserTypeById(UserType a) {
-		return repo.save(a);
+	public UserType updateUserTypeById(UserType type) {
+		return userTypeRepo.save(type);
 	}
 
 	@Override
-	public void deleteUserTypeById(UserType a) {
-		repo.delete(a);
+	public void deleteUserTypeById(Long id) {
+		userTypeRepo.deleteById(id);
 	}
+
 }

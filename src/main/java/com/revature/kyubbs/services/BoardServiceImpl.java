@@ -44,11 +44,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public Board addBoard(Board board) {
 
-		for (Board b : findAllBoards()) {
-			if (b.getName().equals(b.getName())) {
-				return null;
-			}
-		}
+//		for (Board b : findAllBoards()) {
+//			if (b.getName().equals(board.getName())) {
+//				return null;
+//			}
+//		}
 
 		return boardRepo.save(board);
 	}
@@ -59,7 +59,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void deleteBoard(Board board) {
-		boardRepo.delete(board);
+	public void deleteBoard(Long id) {
+		boardRepo.deleteById(id);;
 	}
 }

@@ -1,6 +1,5 @@
 package com.revature.kyubbs.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,23 +16,18 @@ public class PostServiceImpl implements PostService {
 	@Autowired
 	PostRepository postrepo;
 
-	public PostServiceImpl() {
-		super();
-	}
-
-	@Override
-	public List<Post> getAllPostsByThreadId(Long threadId) {
-
-		List<Post> temp = postrepo.findAll();
-		List<Post> returnPost = new ArrayList<Post>();
-
-		for (Post p : temp) {
-			if (p.getThreadId() == threadId) {
-				returnPost.add(p);
-			}
-		}
-		return returnPost;
-	}
+//	@Override
+//	public List<Post> getAllPostsByThread(Long thread_id) {
+//		List<Post> temp = postrepo.findAll();
+//		List<Post> returnPost = new ArrayList<Post>();
+//
+//		for (Post p : temp) {
+//			if (p.getThread_id().getId() == thread_id) {
+//				returnPost.add(p);
+//			}
+//		}
+//		return returnPost;
+//	}
 
 	@Override
 	public Post findPostById(Long id) {
@@ -41,17 +35,22 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public void addPost(Post post) {
-		postrepo.save(post);
+	public Post addPost(Post post) {
+		return postrepo.save(post);
 	}
 
 	@Override
-	public void updatePost(Post post) {
-		postrepo.save(post);
+	public Post updatePost(Post post) {
+		return postrepo.save(post);
 	}
 
 	@Override
-	public void deletePost(Post post) {
-		postrepo.delete(post);
+	public void deletePost(Long id) {
+		postrepo.deleteById(id);
+	}
+
+	@Override
+	public List<Post> findAllPosts() {
+		return postrepo.findAll();
 	}
 }

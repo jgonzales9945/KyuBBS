@@ -6,6 +6,6 @@ import com.revature.kyubbs.models.*;
 
 public interface UserTypeRepository extends JpaRepository<UserType,Long>{
 	
-	public UserType findUserTypeByUserAccount(String userAccount);
+	public UserType findUserTypeByAccount(String account);
 	
 }

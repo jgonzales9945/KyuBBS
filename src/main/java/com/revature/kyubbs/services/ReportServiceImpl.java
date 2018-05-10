@@ -27,12 +27,12 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
-	public Report findReportByPostId(Long id) {
+	public Report findReportByPostId(int id) {
 		return reportRepo.findReportByPostId(id);
 	}
 
 	@Override
-	public Report findReportByThreadId(Long id) {
+	public Report findReportByThreadId(int id) {
 		return reportRepo.findReportByThreadId(id);
 	}
 
@@ -52,8 +52,9 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
-	public void deleteReportById(Report r) {
+	public void deleteReportById(Long id) {
 
-		reportRepo.delete(r);
+		reportRepo.deleteById(id);
+
 	}
 }

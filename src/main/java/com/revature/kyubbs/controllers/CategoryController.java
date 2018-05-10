@@ -42,18 +42,18 @@ public class CategoryController {
 		return service.findAllCategories();
 	}
 	
-	@GetMapping(value="/id/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Category findCategoryById(@PathVariable("id") Long id) {
 		return service.findCategoryById(id);
 	}
 	
 	@PatchMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Category updateCategory(@Valid @RequestBody Category c) {
-		return service.updateCategoryById(c);
+		return service.updateCategory(c);
 	}
 	
 	@DeleteMapping(value="/delete/{id}")
 	public void deleteCategory(Long id) {
-		service.deleteCategoryById(id);
+		service.deleteCategory(id);
 	}
 }

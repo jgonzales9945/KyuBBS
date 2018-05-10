@@ -26,7 +26,7 @@ public interface BoardThreadService {
 
 	public BoardThread updateThread(BoardThread boardThread);
 
-	public void deleteBoardThread(BoardThread boardThread);
+	public void deleteBoardThread(Long id);
 
 	// public void reportThread(Report repThread); // <--still needs implementation
 

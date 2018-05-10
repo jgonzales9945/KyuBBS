@@ -13,7 +13,7 @@ import com.revature.kyubbs.services.PostService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/board/thread/post")
+@RequestMapping("/boards/threads/posts")
 public class PostController {
 
 	@Autowired
@@ -23,28 +23,34 @@ public class PostController {
 		super();
 	}
 
-	@GetMapping(value = "/threadId/{threadId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Post> findPostsByThreadId(@PathVariable Long threadId) {
-		return postService.getAllPostsByThreadId(threadId);
-	}
+//	@GetMapping(value = "/threadId/{threadId}", produces = MediaType.APPLICATION_JSON_VALUE)
+//	public List<Post> findPostsByThreadId(@PathVariable Long threadId) {
+//		return postService.getAllPostsByThread(threadId);
+//	}
 
-	@GetMapping(value = "/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Post findPostById(@PathVariable Long id) {
-		return postService.findPostById(id);
+	@GetMapping(value = "/id/{postId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Post findBoardThreadsByBoardId(@PathVariable("postId") Long postId) {
+		return postService.findPostById(postId);
+	}
+	
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Post> findAllPosts() {
+		return postService.findAllPosts();
 	}
 	
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void addPost(@Valid @RequestBody Post post) {
-		postService.addPost(post);
+	public Post addPost(@Valid @RequestBody Post post) {
+		return postService.addPost(post);
 	}
 	
-	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void updatePost(@Valid @RequestBody Post post) {
-		postService.updatePost(post);
+	@PatchMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public Post updatePost(@Valid @RequestBody Post post) {
+		return postService.updatePost(post);
 	}
 	
-	@DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void deletePost(@Valid @RequestBody Post post) {
-		postService.deletePost(post);
+	@DeleteMapping(value="/delete/{id}")
+	public void deletePost(Long id) {
+		postService.deletePost(id);
 	}
+	
 }

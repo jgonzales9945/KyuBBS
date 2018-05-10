@@ -74,7 +74,7 @@ public class BoardThreadServiceImpl implements BoardThreadService {
 	}
 
 	@Override
-	public void deleteBoardThread(BoardThread boardThread) {
-		boardThreadRepo.delete(boardThread);
+	public void deleteBoardThread(Long id) {
+		boardThreadRepo.deleteById(id);
 	}
 }

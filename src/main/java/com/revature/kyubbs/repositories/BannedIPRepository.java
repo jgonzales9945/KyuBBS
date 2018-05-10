@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.revature.kyubbs.models.*;
 
-public interface BannedIPRepository extends JpaRepository<BannedIP, Long> {
-
-	public BannedIP findBannedIPByIpAddress(String ipAddress);
+public interface BannedIpRepository extends JpaRepository<BannedIp,Long>{
+	
+	public BannedIp findBannedIpByIpAddress(String ipAddress);
 }
