@@ -59,7 +59,7 @@ public class BoardThread implements Serializable{
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="USER_ID")
 	@NotNull
-	private AuthUser authenticatedUserId;
+	private User authenticatedUserId;
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="BOARD_ID")
@@ -68,7 +68,7 @@ public class BoardThread implements Serializable{
 
 	public BoardThread(Long id, @NotNull String title, @NotNull String name, @NotNull String subject,
 			@NotNull String content, @NotNull Timestamp startDate, @NotNull Timestamp modifiedDate, @NotNull int flag,
-			@NotNull String ipAddress, @NotNull AuthUser authenticatedUserId, @NotNull Board boardId) {
+			@NotNull String ipAddress, @NotNull User authenticatedUserId, @NotNull Board boardId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -83,9 +83,13 @@ public class BoardThread implements Serializable{
 		this.boardId = boardId;
 	}
 
+	public BoardThread() {
+		super();
+	}
+
 	public BoardThread(@NotNull String title, @NotNull String name, @NotNull String subject, @NotNull String content,
 			@NotNull Timestamp startDate, @NotNull Timestamp modifiedDate, @NotNull int flag, @NotNull String ipAddress,
-			@NotNull AuthUser authenticatedUserId, @NotNull Board boardId) {
+			@NotNull User authenticatedUserId, @NotNull Board boardId) {
 		super();
 		this.title = title;
 		this.name = name;
@@ -97,10 +101,6 @@ public class BoardThread implements Serializable{
 		this.ipAddress = ipAddress;
 		this.authenticatedUserId = authenticatedUserId;
 		this.boardId = boardId;
-	}
-
-	public BoardThread() {
-		super();
 	}
 
 	public Long getId() {
@@ -175,11 +175,11 @@ public class BoardThread implements Serializable{
 		this.ipAddress = ipAddress;
 	}
 
-	public AuthUser getAuthenticatedUserId() {
+	public User getAuthenticatedUserId() {
 		return authenticatedUserId;
 	}
 
-	public void setAuthenticatedUserId(AuthUser authenticatedUserId) {
+	public void setAuthenticatedUserId(User authenticatedUserId) {
 		this.authenticatedUserId = authenticatedUserId;
 	}
 
@@ -280,4 +280,5 @@ public class BoardThread implements Serializable{
 				+ ", ipAddress=" + ipAddress + ", authenticatedUserId=" + authenticatedUserId + ", boardId=" + boardId
 				+ "]";
 	}
+	
 }
