@@ -1,3 +1,4 @@
+
 package com.revature.kyubbs.models;
 
 import java.io.Serializable;

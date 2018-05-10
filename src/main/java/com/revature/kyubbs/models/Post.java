@@ -40,14 +40,14 @@ public class Post implements Serializable {
 	@Column(name="POST_IP_ADDRESS")
 	@NotNull	
 	private String ipAddress;
-	
+
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="USER_ID")
 	private User userId;
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="THREAD_ID")
-	@NotNull	
+	@NotNull
 	private BoardThread threadId;
 
 	public Post(long postId, String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate,
