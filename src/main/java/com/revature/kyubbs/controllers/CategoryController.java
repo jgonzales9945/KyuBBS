@@ -21,7 +21,7 @@ import com.revature.kyubbs.services.CategoryService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/category")
 public class CategoryController {
 
 	@Autowired
@@ -53,7 +53,7 @@ public class CategoryController {
 	}
 	
 	@DeleteMapping(value="/delete/{id}")
-	public void deleteCategory(Long id) {
+	public void deleteCategory(@PathVariable("id") Long id) {
 		service.deleteCategory(id);
 	}
 }

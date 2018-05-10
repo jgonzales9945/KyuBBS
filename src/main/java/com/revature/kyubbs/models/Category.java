@@ -30,7 +30,7 @@ public class Category implements Serializable{
 	@Column(name="CATEGORY_NAME")
 	@NotNull
 	private String name;
-
+	
 	public Category(Long categoryId, @NotNull String name) {
 		super();
 		this.categoryId = categoryId;

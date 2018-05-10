@@ -13,7 +13,7 @@ import com.revature.kyubbs.services.PostService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/boards/threads/posts")
 public class PostController {
 
 	@Autowired

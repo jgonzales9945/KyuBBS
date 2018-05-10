@@ -13,7 +13,7 @@ import com.revature.kyubbs.services.BoardService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/boards")
+@RequestMapping("/board")
 public class BoardController {
 
 	@Autowired
@@ -25,7 +25,7 @@ public class BoardController {
 	}
 
 	@GetMapping(value = "/categoryId/{categoryId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Board> findBoardsByCategoryId(@PathVariable Long categoryId) {
+	public List<Board> findBoardsByCategoryId(@PathVariable("categoryId") Long categoryId) {
 		return boardService.findBoardsByCategoryId(categoryId);
 	}
 	
@@ -35,12 +35,12 @@ public class BoardController {
 	}
 	
 	@GetMapping(value = "/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Board findBoardByName(@PathVariable String name) {
+	public Board findBoardByName(@PathVariable("name") String name) {
 		return boardService.findBoardByName(name);
 	}
 	
 	@GetMapping(value = "/desc/{desc}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Board findBoardByDesc(@PathVariable String desc) {
+	public Board findBoardByDesc(@PathVariable("desc") String desc) {
 		return boardService.findBoardByDesc(desc);
 	}
 	
