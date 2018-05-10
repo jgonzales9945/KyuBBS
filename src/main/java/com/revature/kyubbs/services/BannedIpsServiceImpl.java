@@ -6,43 +6,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.kyubbs.models.BannedIP;
-import com.revature.kyubbs.repositories.BannedIPRepository;
+import com.revature.kyubbs.models.BannedIp;
+import com.revature.kyubbs.repositories.*;
 
 @Service
 @Transactional
 public class BannedIpsServiceImpl implements BannedIpsService {
 
 	@Autowired
-	BannedIPRepository bannedIPRepo;
+	BannedIpRepository bannedIPRepo;
 
 	@Override
-	public List<BannedIP> findAllBannedIPs() {
+	public List<BannedIp> findAllBannedIPs() {
 		return bannedIPRepo.findAll();
 	}
 
 	@Override
-	public BannedIP addBannedIP(BannedIP b) {
+	public BannedIp addBannedIP(BannedIp b) {
 		return bannedIPRepo.save(b);
 	}
 
 	@Override
-	public BannedIP findBannedIPByIpAddress(String ipAddress) {
-		return bannedIPRepo.findBannedIPByIpAddress(ipAddress);
+	public BannedIp findBannedIPByIpAddress(String ipAddress) {
+		return bannedIPRepo.findBannedIpByIpAddress(ipAddress);
 	}
 
 	@Override
-	public BannedIP findBannedIpById(Long id) {
+	public BannedIp findBannedIpById(Long id) {
 		return bannedIPRepo.getOne(id);
 	}
 
 	@Override
-	public BannedIP updateBannedIPById(BannedIP b) {
+	public BannedIp updateBannedIPById(BannedIp b) {
 		return bannedIPRepo.save(b);
 	}
 
 	@Override
-	public void deleteBannedIPById(BannedIP b) {
+	public void deleteBannedIPById(BannedIp b) {
 		bannedIPRepo.delete(b);
 	}
 

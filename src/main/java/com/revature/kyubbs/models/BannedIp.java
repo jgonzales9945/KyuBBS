@@ -35,22 +35,23 @@ public class BannedIp implements Serializable{
 	@Column(name="BANNED_EXP_DATE")
 	private Timestamp expDate;
 
-	public BannedIp(Long bannedId, @NotNull String address, Timestamp startDate, Timestamp expDate) {
+	public BannedIp(Long bannedId, @NotNull String ipAddress, Timestamp startDate, Timestamp expDate) {
 		super();
 		this.bannedId = bannedId;
-		this.ipAddress = address;
+		this.ipAddress = ipAddress;
+		this.startDate = startDate;
+		this.expDate = expDate;
+	}
+
+	public BannedIp(@NotNull String ipAddress, Timestamp startDate, Timestamp expDate) {
+		super();
+		this.ipAddress = ipAddress;
 		this.startDate = startDate;
 		this.expDate = expDate;
 	}
 
 	public BannedIp() {
 		super();
-	}
-
-	public BannedIp(@NotNull String address, Timestamp expDate) {
-		super();
-		this.ipAddress = address;
-		this.expDate = expDate;
 	}
 
 	public Long getBannedId() {
@@ -61,12 +62,12 @@ public class BannedIp implements Serializable{
 		this.bannedId = bannedId;
 	}
 
-	public String getAddress() {
+	public String getIpAddress() {
 		return ipAddress;
 	}
 
-	public void setAddress(String address) {
-		this.ipAddress = address;
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
 	}
 
 	public Timestamp getStartDate() {
@@ -89,9 +90,9 @@ public class BannedIp implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ipAddress == null) ? 0 : ipAddress.hashCode());
 		result = prime * result + ((bannedId == null) ? 0 : bannedId.hashCode());
 		result = prime * result + ((expDate == null) ? 0 : expDate.hashCode());
+		result = prime * result + ((ipAddress == null) ? 0 : ipAddress.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		return result;
 	}
@@ -105,11 +106,6 @@ public class BannedIp implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		BannedIp other = (BannedIp) obj;
-		if (ipAddress == null) {
-			if (other.ipAddress != null)
-				return false;
-		} else if (!ipAddress.equals(other.ipAddress))
-			return false;
 		if (bannedId == null) {
 			if (other.bannedId != null)
 				return false;
@@ -119,6 +115,11 @@ public class BannedIp implements Serializable{
 			if (other.expDate != null)
 				return false;
 		} else if (!expDate.equals(other.expDate))
+			return false;
+		if (ipAddress == null) {
+			if (other.ipAddress != null)
+				return false;
+		} else if (!ipAddress.equals(other.ipAddress))
 			return false;
 		if (startDate == null) {
 			if (other.startDate != null)
@@ -130,8 +131,8 @@ public class BannedIp implements Serializable{
 
 	@Override
 	public String toString() {
-		return "BannedIP [bannedId=" + bannedId + ", address=" + ipAddress + ", startDate=" + startDate + ", expDate="
+		return "BannedIp [bannedId=" + bannedId + ", ipAddress=" + ipAddress + ", startDate=" + startDate + ", expDate="
 				+ expDate + "]";
 	}
-	
+
 }

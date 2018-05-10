@@ -43,7 +43,7 @@ public class Post implements Serializable {
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="USER_ID")
-	private User userId;
+	private AuthUser userId;
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="THREAD_ID")
@@ -51,7 +51,7 @@ public class Post implements Serializable {
 	private BoardThread threadId;
 
 	public Post(long postId, String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate,
-			int flag, @NotNull String ipAddress, User userId, @NotNull BoardThread threadId) {
+			int flag, @NotNull String ipAddress, AuthUser userId, @NotNull BoardThread threadId) {
 		super();
 		this.postId = postId;
 		this.name = name;
@@ -65,7 +65,7 @@ public class Post implements Serializable {
 	}
 
 	public Post(String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate, int flag,
-			@NotNull String ipAddress, User userId, @NotNull BoardThread threadId) {
+			@NotNull String ipAddress, AuthUser userId, @NotNull BoardThread threadId) {
 		super();
 		this.name = name;
 		this.content = content;
@@ -137,11 +137,11 @@ public class Post implements Serializable {
 		this.ipAddress = ipAddress;
 	}
 
-	public User getUserId() {
+	public AuthUser getUserId() {
 		return userId;
 	}
 
-	public void setUserId(User userId) {
+	public void setUserId(AuthUser userId) {
 		this.userId = userId;
 	}
 
@@ -226,6 +226,6 @@ public class Post implements Serializable {
 				+ ", modifiedDate=" + modifiedDate + ", flag=" + flag + ", ipAddress=" + ipAddress + ", userId="
 				+ userId + ", threadId=" + threadId + "]";
 	}
-	
+
 	
 }
