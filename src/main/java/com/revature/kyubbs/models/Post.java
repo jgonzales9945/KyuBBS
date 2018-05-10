@@ -3,8 +3,9 @@ package com.revature.kyubbs.models;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.validation.constraints.NotNull;
+import javax.persistence.CascadeType;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
