@@ -3,11 +3,15 @@ package com.revature.kyubbs.models;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -46,19 +50,21 @@ public class Post implements Serializable {
 	@NotNull
 	private String ipAddress;
 
-	@Column(name = "AUTH_USER_ID")
-	private long authUserId;
+	@ManyToOne(fetch=FetchType.EAGER,targetEntity=AuthUser.class, cascade = CascadeType.ALL)
+	@JoinColumn(name="AUTH_USER_ID")
+	private Long authUserId;
 
-	@Column(name = "THREAD_ID")
+	@ManyToOne(fetch=FetchType.EAGER,targetEntity=BoardThread.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "THREAD_ID")
 	@NotNull
-	private long threadId;
+	private Long threadId;
 
 	public Post() {
 		super();
 	}
 
 	public Post(String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate, int flag,
-			@NotNull String ipAddress, long authUserId, @NotNull long threadId) {
+			@NotNull String ipAddress, Long authUserId, @NotNull Long threadId) {
 		super();
 		this.name = name;
 		this.content = content;
@@ -69,9 +75,9 @@ public class Post implements Serializable {
 		this.authUserId = authUserId;
 		this.threadId = threadId;
 	}
-
-	public Post(long id, String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate,
-			int flag, @NotNull String ipAddress, long authUserId, @NotNull long threadId) {
+	
+	public Post(Long id, String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate,
+			int flag, @NotNull String ipAddress, Long authUserId, @NotNull Long threadId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -84,11 +90,11 @@ public class Post implements Serializable {
 		this.threadId = threadId;
 	}
 
-	public long getid() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setid(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -142,12 +148,10 @@ public class Post implements Serializable {
 
 	public Long getAuthUserId() {
 		return authUserId;
-
 	}
 
-
-	public void setAuthenticatedUserId(Long authenticatedUserId) {
-		this.authUserId = authenticatedUserId;
+	public void setAuthUserId(Long authUserId) {
+		this.authUserId = authUserId;
 	}
 
 	public Long getThreadId() {
@@ -155,16 +159,6 @@ public class Post implements Serializable {
 	}
 
 	public void setThreadId(Long threadId) {
-		this.threadId = threadId;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-
-
-	}
-
-	public void setThreadId(long threadId) {
 		this.threadId = threadId;
 	}
 
