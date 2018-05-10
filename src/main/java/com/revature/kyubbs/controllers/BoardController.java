@@ -25,12 +25,12 @@ public class BoardController {
 	}
 
 	@GetMapping(value = "/categoryId/{categoryId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Board> findBoardsByCategoryId(@PathVariable("categoryId") Long categoryId) {
+	public List<Board> findBoardsByCategoryId(@PathVariable Long categoryId) {
 		return boardService.findBoardsByCategoryId(categoryId);
 	}
 	
 	@GetMapping(value = "/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Board findBoardById(@PathVariable Long id) {
+	public Board findBoardById(@PathVariable("id") Long id) {
 		return boardService.findBoardById(id);
 	}
 	
@@ -49,13 +49,13 @@ public class BoardController {
 		return boardService.addBoard(board);
 	}
 	
-	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PatchMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Board updateBoard(@Valid @RequestBody Board board) {
 		return boardService.updateBoard(board);
 	}
 	
-	@DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void deleteBoardById(@PathVariable Long id) {
-		boardService.deleteBoard(boardService.findBoardById(id));
+	@DeleteMapping(value="/delete/{id}")
+	public void deleteBoardById(@PathVariable("id") Long id) {
+		boardService.deleteBoard(id);
 	}
 }

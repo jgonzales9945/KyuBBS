@@ -2,15 +2,14 @@ package com.revature.kyubbs.services;
 
 import java.util.List;
 
-import com.revature.kyubbs.models.*;
+import com.revature.kyubbs.models.UserType;
 
 public interface UserTypeService {
 	
-	public UserType findUserTypeByUserAccount(String userAccount);
-	public List<UserType> findAllUserType();
-	public UserType addUserType(UserType a);
+	public UserType findUserTypeByAccount(String account);
+	public UserType addUserType(UserType type);
+	public List<UserType> findAllUserTypes();
 	public UserType findUserTypeById(Long id);
-	public UserType updateUserTypeById(UserType a);
-	public void deleteUserTypeById(UserType a);
-	
+	public UserType updateUserTypeById(UserType type);
+	public void deleteUserTypeById(Long id);
 }

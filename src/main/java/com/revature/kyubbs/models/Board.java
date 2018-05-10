@@ -3,8 +3,8 @@ package com.revature.kyubbs.models;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 
 import org.springframework.stereotype.Component;
 
@@ -40,16 +40,13 @@ public class Board implements Serializable {
 	@NotNull
 	private int maxPosts;
 	
-	@ManyToOne(targetEntity = Category.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="CATEGORY_ID", referencedColumnName="CATEGORY_ID")
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="CATEGORY_ID")
 	@NotNull
-	private Long categoryId;
+	private Category categoryId;
 
-	public Board() {
-		super();
-	}
-
-	public Board(Long id, String name, String desc, Timestamp startDate, int maxThreads, int maxPosts, @NotNull Long categoryId) {
+	public Board(Long id, @NotNull String name, @NotNull String desc, @NotNull Timestamp startDate,
+			@NotNull int maxThreads, @NotNull int maxPosts, @NotNull Category categoryId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -60,7 +57,12 @@ public class Board implements Serializable {
 		this.categoryId = categoryId;
 	}
 
-	public Board(String name, String desc, Timestamp startDate, int maxThreads, int maxPosts, @NotNull Long categoryId) {
+	public Board() {
+		super();
+	}
+
+	public Board(@NotNull String name, @NotNull String desc, @NotNull Timestamp startDate, @NotNull int maxThreads,
+			@NotNull int maxPosts, @NotNull Category categoryId) {
 		super();
 		this.name = name;
 		this.desc = desc;
@@ -118,11 +120,11 @@ public class Board implements Serializable {
 		this.maxPosts = maxPosts;
 	}
 
-	public @NotNull Long getCategoryId() {
+	public Category getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(@NotNull Long categoryId) {
+	public void setCategoryId(Category categoryId) {
 		this.categoryId = categoryId;
 	}
 
@@ -186,4 +188,6 @@ public class Board implements Serializable {
 		return "Board [id=" + id + ", name=" + name + ", desc=" + desc + ", startDate=" + startDate + ", maxThreads="
 				+ maxThreads + ", maxPosts=" + maxPosts + ", categoryId=" + categoryId + "]";
 	}
+
+	
 }

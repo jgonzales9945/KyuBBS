@@ -2,14 +2,22 @@ package com.revature.kyubbs.models;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Component
 @Entity
 @Table(name="KB_CATEGORY")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Category implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -17,7 +25,7 @@ public class Category implements Serializable{
 	@Id
 	@Column(name="CATEGORY_ID")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long catId;
+	private Long categoryId;
 	
 	@Column(name="CATEGORY_NAME")
 	@NotNull
@@ -25,7 +33,7 @@ public class Category implements Serializable{
 
 	public Category(Long categoryId, @NotNull String name) {
 		super();
-		this.catId = categoryId;
+		this.categoryId = categoryId;
 		this.name = name;
 	}
 
@@ -39,11 +47,11 @@ public class Category implements Serializable{
 	}
 
 	public Long getCategoryId() {
-		return catId;
+		return categoryId;
 	}
 
 	public void setCategoryId(Long categoryId) {
-		this.catId = categoryId;
+		this.categoryId = categoryId;
 	}
 
 	public String getName() {
@@ -58,7 +66,7 @@ public class Category implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((catId == null) ? 0 : catId.hashCode());
+		result = prime * result + ((categoryId == null) ? 0 : categoryId.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -72,10 +80,10 @@ public class Category implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Category other = (Category) obj;
-		if (catId == null) {
-			if (other.catId != null)
+		if (categoryId == null) {
+			if (other.categoryId != null)
 				return false;
-		} else if (!catId.equals(other.catId))
+		} else if (!categoryId.equals(other.categoryId))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -87,6 +95,6 @@ public class Category implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Category [categoryId=" + catId + ", name=" + name + "]";
+		return "Category [categoryId=" + categoryId + ", name=" + name + "]";
 	}
 }
