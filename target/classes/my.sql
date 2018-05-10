@@ -3,7 +3,11 @@ CREATE DATABASE NINEBBSDB;
 USE NINEBBSDB;
 /******************************************************************
 *org.mariadb.jdbc.Driver
+<<<<<<< aa07895cd35dd69205b7a1b1bdb0ba6b40eeae12
 *jdbc:mysql://localhost:3306, user, password
+=======
+*jdbc:mariadb://localhost:3306, user, password
+>>>>>>> hello
 *<dependency>
 *    <groupId>org.mariadb.jdbc</groupId>
 *    <artifactId>mariadb-java-client</artifactId>

@@ -17,6 +17,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Component
 @Entity
 @Table(name = "KB_BOARDS")
@@ -50,18 +52,17 @@ public class Board implements Serializable {
 	private int maxPosts;
 	
 
-
 	@ManyToOne(targetEntity = Category.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="CATEGORY_ID", referencedColumnName="CATEGORY_ID")
 	@NotNull
-	private Long categoryId;
+	private Category category;
 
 	public Board() {
 		super();
 	}
 
 
-	public Board(Long id, String name, String desc, Timestamp startDate, int maxThreads, int maxPosts, Long categoryId) {
+	public Board(Long id, String name, String desc, Timestamp startDate, int maxThreads, int maxPosts, Category category) {
 
 		super();
 		this.id = id;
@@ -70,11 +71,11 @@ public class Board implements Serializable {
 		this.startDate = startDate;
 		this.maxThreads = maxThreads;
 		this.maxPosts = maxPosts;
-		this.categoryId = categoryId;
+		this.category = category;
 	}
 
 
-	public Board(String name, String desc, Timestamp startDate, int maxThreads, int maxPosts, Long categoryId) {
+	public Board(String name, String desc, Timestamp startDate, int maxThreads, int maxPosts, Category category) {
 
 		super();
 		this.name = name;
@@ -82,7 +83,7 @@ public class Board implements Serializable {
 		this.startDate = startDate;
 		this.maxThreads = maxThreads;
 		this.maxPosts = maxPosts;
-		this.categoryId = categoryId;
+		this.category = category;
 	}
 
 	public Long getId() {
@@ -134,14 +135,19 @@ public class Board implements Serializable {
 	}
 
 
-	public Long getCategoryId() {
-		return categoryId;
+
+
+
+
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setCategoryId(Long categoryId) {
 
-		this.categoryId = categoryId;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
+
 
 
 
@@ -149,7 +155,7 @@ public class Board implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((categoryId == null) ? 0 : categoryId.hashCode());
+		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((desc == null) ? 0 : desc.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + maxPosts;
@@ -158,6 +164,7 @@ public class Board implements Serializable {
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -168,10 +175,10 @@ public class Board implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Board other = (Board) obj;
-		if (categoryId == null) {
-			if (other.categoryId != null)
+		if (category == null) {
+			if (other.category != null)
 				return false;
-		} else if (!categoryId.equals(other.categoryId))
+		} else if (!category.equals(other.category))
 			return false;
 		if (desc == null) {
 			if (other.desc != null)
@@ -200,9 +207,10 @@ public class Board implements Serializable {
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Board [id=" + id + ", name=" + name + ", desc=" + desc + ", startDate=" + startDate + ", maxThreads="
-				+ maxThreads + ", maxPosts=" + maxPosts + ", categoryId=" + categoryId + "]";
+				+ maxThreads + ", maxPosts=" + maxPosts + ", categoryId=" + category.getCategoryId() + "]";
 	}
 }
