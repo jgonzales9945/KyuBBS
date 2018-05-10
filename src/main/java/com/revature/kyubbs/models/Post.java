@@ -3,12 +3,7 @@ package com.revature.kyubbs.models;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
@@ -46,12 +41,14 @@ public class Post implements Serializable {
 	@NotNull
 	private String ipAddress;
 
-	@Column(name = "AUTH_USER_ID")
-	private long authUserId;
+	@ManyToOne(targetEntity = AuthUser.class, fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "AUTH_USER_ID")
+	private Long authUserId;
 
-	@Column(name = "THREAD_ID")
+	@ManyToOne(targetEntity = BoardThread.class, fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="THREAD_ID")
 	@NotNull
-	private long threadId;
+	private Long threadId;
 
 	public Post() {
 		super();
