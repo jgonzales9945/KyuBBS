@@ -1,7 +1,7 @@
-## KyuBBS
+# KyuBBS
 A BBS using Java and angular
 
-# Board Rules
+## Board Rules
 1) Illegal content, illicit pornographic content, and generally offensive content will be subject to deletion and a ban.
 2) Spamming content, legal or illegal, will result in a ban and all offending posts will be removed.
 3) Hyperlinking offensive, malicious, or illegal websites will result in a ban.
