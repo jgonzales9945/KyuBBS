@@ -1,5 +1,6 @@
 package com.revature.kyubbs.services;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,13 +44,18 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Board addBoard(Board board) {
-
-//		for (Board b : findAllBoards()) {
-//			if (b.getName().equals(board.getName())) {
-//				return null;
-//			}
-//		}
-
+		
+		for (Board b : findAllBoards()) {
+			if (b.getName().equals(board.getName())) {
+				return null;
+			}
+		}
+		
+		Timestamp date = new Timestamp(System.currentTimeMillis());
+		board.setStartDate(date);
+		board.setMaxPosts(50);
+		board.setMaxThreads(20);
+		
 		return boardRepo.save(board);
 	}
 

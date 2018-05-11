@@ -10,7 +10,7 @@ public interface BannedIpService {
 	public BannedIp addBannedIp(BannedIp b);
 	public BannedIp findBannedIpByIpAddress(String ipAddress);
 	public BannedIp findBannedIpById(Long id);
-	public BannedIp updateBannedIpById(BannedIp b);
-	public void deleteBannedIpById(Long id);
+	public BannedIp updateBannedIp(BannedIp b);
+	public void deleteBannedIp(Long id);
 	
 }
