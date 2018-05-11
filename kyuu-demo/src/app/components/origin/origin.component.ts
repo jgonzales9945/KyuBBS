@@ -29,8 +29,8 @@ words : string;
   constructor() { }
 
   ngOnInit() {
-    this.fiber.Text = "Root Node";
-    this.fiber.ID = "anonymous123";
+    //this.fiber.Text = "Root Node";
+   // this.fiber.ID = "anonymous123";
     this.rope.push(this.fiber);
     this.counter = 1;
     console.log(this.rope);
@@ -46,9 +46,9 @@ words : string;
     let temp = new Thread();
     let day = new Date();
 
-    temp.ID = this.user.username;
-    temp.Text = this.words;
-    temp.Date = day.toString();
+   // temp.ID = this.user.username;
+   // temp.Text = this.words;
+   // temp.Date = day.toString();
 
     if(this.shift){
 this.words += '\n';

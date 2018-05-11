@@ -9,7 +9,6 @@
 	<configs>
 	</configs>
 	<autoconfigs>
-		<config>java:com.revature.kyubbs.Driver</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

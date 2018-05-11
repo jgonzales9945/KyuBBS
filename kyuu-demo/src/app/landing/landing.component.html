@@ -1,115 +1,32 @@
 <body>
 <div class="container-fluid">
+    <marquee scrollamount="12">
 
+        <div class="row">
+            <div *ngFor="let k of kyb"  class="block cube">
+              <div class="cube__face cube__face--front">{{k}}</div>
+              <div class="cube__face cube__face--back">{{k}}</div>
+              <div class="cube__face cube__face--right">{{k}}</div>
+              <div class="cube__face cube__face--left">{{k}}</div>
+              <div class="cube__face cube__face--top">{{k}}</div>
+              <div class="cube__face cube__face--bottom">{{k}}</div>
+            </div>
+          </div>
+       
+ 
+    </marquee>
+</div>         
 
-  
+<div class="container boards" *ngFor="let category of categoryList">
+<button  class="accordion"  (click)="playAccordion($event)">{{category.name}}</button>
+<div class="panel">
+<ul *ngFor="let board of boardList" >
+<li *ngIf="board.categoryId.categoryId==category.categoryId"><a href="javascript:void(0)" routerLink="origin">{{board.name}}</a></li>
+</ul>
+</div>
 </div>
 
-<div class="container center">
-    <div class="col-md-3 scene">
-        <div class="cube">
-          <div class="cube__face cube__face--front">Science</div>
-          <div class="cube__face cube__face--back">HOME</div>
-          <div class="cube__face cube__face--right"></div>
-          <div class="cube__face cube__face--left"></div>
-          <div class="cube__face cube__face--top"></div>
-          <div class="cube__face cube__face--bottom"></div>
-        </div>
-      </div>
 
-      <div class="col-md-3 scene">
-          <div class="cube">
-            <div class="cube__face cube__face--front">Tech</div>
-            <div class="cube__face cube__face--back">HOME</div>
-            <div class="cube__face cube__face--right"></div>
-            <div class="cube__face cube__face--left"></div>
-            <div class="cube__face cube__face--top"></div>
-            <div class="cube__face cube__face--bottom"></div>
-          </div>
-        </div>
 
-        <div class="col-md-3 scene">
-            <div class="cube">
-              <div class="cube__face cube__face--front">Arts</div>
-              <div class="cube__face cube__face--back">HOME</div>
-              <div class="cube__face cube__face--right"></div>
-              <div class="cube__face cube__face--left"></div>
-              <div class="cube__face cube__face--top"></div>
-              <div class="cube__face cube__face--bottom"></div>
-            </div>
-          </div>
-
-          <div class="col-md-3 scene">
-              <div class="cube">
-                <div class="cube__face cube__face--front">Gaming</div>
-                <div class="cube__face cube__face--back">HOME</div>
-                <div class="cube__face cube__face--right"></div>
-                <div class="cube__face cube__face--left"></div>
-                <div class="cube__face cube__face--top"></div>
-                <div class="cube__face cube__face--bottom"></div>
-              </div>
-            </div>
-
-            <div class="col-md-3 scene">
-                <div class="cube">
-                  <div class="cube__face cube__face--front">Film</div>
-                  <div class="cube__face cube__face--back">HOME</div>
-                  <div class="cube__face cube__face--right"></div>
-                  <div class="cube__face cube__face--left"></div>
-                  <div class="cube__face cube__face--top"></div>
-                  <div class="cube__face cube__face--bottom"></div>
-                </div>
-              </div>
-
-              <div class="col-md-3 scene">
-                  <div class="cube">
-                    <div class="cube__face cube__face--front">Animation</div>
-                    <div class="cube__face cube__face--back">HOME</div>
-                    <div class="cube__face cube__face--right"></div>
-                    <div class="cube__face cube__face--left"></div>
-                    <div class="cube__face cube__face--top"></div>
-                    <div class="cube__face cube__face--bottom"></div>
-                  </div>
-                </div>
-
-                <div class="col-md-3 scene">
-                    <div class="cube">
-                      <div class="cube__face cube__face--front">Fitness</div>
-                      <div class="cube__face cube__face--back">HOME</div>
-                      <div class="cube__face cube__face--right"></div>
-                      <div class="cube__face cube__face--left"></div>
-                      <div class="cube__face cube__face--top"></div>
-                      <div class="cube__face cube__face--bottom"></div>
-                    </div>
-                  </div>
-
-                  <div class="col-md-3 scene">
-                      <div class="cube">
-                        <div class="cube__face cube__face--front">Sports</div>
-                        <div class="cube__face cube__face--back">HOME</div>
-                        <div class="cube__face cube__face--right">today the </div>
-                        <div class="cube__face cube__face--left">5-0 5-0-50-</div>
-                        <div class="cube__face cube__face--top"></div>
-                        <div class="cube__face cube__face--bottom"></div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-3 scene">
-                        <div class="cube">
-                          <div class="cube__face cube__face--front">Outdoors</div>
-                          <div class="cube__face cube__face--back">HOME</div>
-                          <div class="cube__face cube__face--right"></div>
-                          <div class="cube__face cube__face--left"></div>
-                          <div class="cube__face cube__face--top"></div>
-                          <div class="cube__face cube__face--bottom"></div>
-                        </div>
-                      </div>
-
-                  
-
-            
           
-
-      
-            </div>
           </body>

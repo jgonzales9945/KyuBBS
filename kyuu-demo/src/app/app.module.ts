@@ -5,17 +5,16 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { Alt1Component } from './components/alt1/alt1.component';
 import { AppRoutingModule } from './app-routing.module';
 import { OriginComponent } from './components/origin/origin.component';
 import { LandingComponent } from './landing/landing.component';
 import { CategoryService } from './services/category.service';
+import { BoardService } from './services/board.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Alt1Component,
     OriginComponent,
     LandingComponent,
 
@@ -26,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [CategoryService],
+  providers: [CategoryService,BoardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
