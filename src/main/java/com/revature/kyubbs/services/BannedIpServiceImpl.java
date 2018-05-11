@@ -1,5 +1,6 @@
 package com.revature.kyubbs.services;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class BannedIpServiceImpl implements BannedIpService{
 
 	@Override
 	public BannedIp addBannedIp(BannedIp b) {
+		
+		Timestamp date = new Timestamp(System.currentTimeMillis());
+		b.setStartDate(date);
+		
 		return bannedIPRepo.save(b);
 	}
 
@@ -37,12 +42,12 @@ public class BannedIpServiceImpl implements BannedIpService{
 	}
 
 	@Override
-	public BannedIp updateBannedIpById(BannedIp b) {
+	public BannedIp updateBannedIp(BannedIp b) {
 		return bannedIPRepo.save(b);
 	}
 
 	@Override
-	public void deleteBannedIpById(Long id) {
+	public void deleteBannedIp(Long id) {
 		bannedIPRepo.deleteById(id);
 	}
 }

@@ -31,7 +31,7 @@ public class BoardThreadController {
 
 	@GetMapping(value = "/authenticatedUserId/{authenticatedUserId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<BoardThread> findBoardThreadsByAuthenticatedUserId(@PathVariable Long authenticatedUserId) {
-		return boardThreadService.findBoardThreadsByAuthenticatedUserId(authenticatedUserId);
+		return boardThreadService.findBoardThreadsByUserId(authenticatedUserId);
 	}
 	
 	@GetMapping(value = "/boardId/{boardId}", produces = MediaType.APPLICATION_JSON_VALUE)

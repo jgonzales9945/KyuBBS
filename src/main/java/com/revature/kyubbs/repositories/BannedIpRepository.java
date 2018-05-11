@@ -6,5 +6,5 @@ import com.revature.kyubbs.models.*;
 
 public interface BannedIpRepository extends JpaRepository<BannedIp,Long>{
 	
-	public BannedIp findBannedIpByIpAddress(String ipAddress);
+	 public BannedIp findBannedIpByIpAddress(String ipAddress);
 }

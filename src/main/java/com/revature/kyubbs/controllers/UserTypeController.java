@@ -53,7 +53,7 @@ public class UserTypeController {
 	}
 	
 	@DeleteMapping(value="/delete/{id}")
-	public void deleteUserType(Long id) {
+	public void deleteUserType(@PathVariable("id") Long id) {
 		userTypeService.deleteUserTypeById(id);
 	}
 }
