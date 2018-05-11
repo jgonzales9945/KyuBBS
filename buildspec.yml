@@ -9,6 +9,6 @@ phases:
         commands:
             - echo Build completed on `date`
             - mvn package
-    artifacts:
-        files:
-            - target/KyuBBS-0.0.1-SNAPSHOT.jar
+artifacts:
+    files:
+        - target/KyuBBS-0.0.1-SNAPSHOT.jar
