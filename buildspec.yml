@@ -11,4 +11,4 @@ phases:
      - mvn package
 artifacts:
  files:
-- target/YourProject-0.0.1-SNAPSHOT.jar
+- target/KyuBBS-0.0.1-SNAPSHOT.jar

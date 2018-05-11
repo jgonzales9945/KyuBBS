@@ -20,6 +20,6 @@ public interface ReportService {
 
 	public Report updateReportById(Report r);
 
-	public void deleteReportById(Report r);
+	public void deleteReportById(Long id);
 
 }

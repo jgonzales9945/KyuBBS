@@ -1,1 +1,4 @@
 /.metadata/
+/target/classes/META-INF/maven/com.revature/KyuBBS/pom.properties
+/src/main/resources/application.properties
+/target/classes/application.properties

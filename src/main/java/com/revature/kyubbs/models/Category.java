@@ -12,9 +12,12 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Component
 @Entity
 @Table(name="KB_CATEGORY")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Category implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -27,7 +30,7 @@ public class Category implements Serializable{
 	@Column(name="CATEGORY_NAME")
 	@NotNull
 	private String name;
-
+	
 	public Category(Long categoryId, @NotNull String name) {
 		super();
 		this.categoryId = categoryId;

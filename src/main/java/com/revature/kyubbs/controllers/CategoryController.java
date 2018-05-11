@@ -27,7 +27,7 @@ public class CategoryController {
 	@Autowired
 	CategoryService service;
 	
-	@GetMapping(value="/{name}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/name/{name}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Category findCategoryByName(@PathVariable("name") String name) {
 		return service.findCategoryByName(name);
 	}
@@ -49,11 +49,11 @@ public class CategoryController {
 	
 	@PatchMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Category updateCategory(@Valid @RequestBody Category c) {
-		return service.updateCategoryById(c);
+		return service.updateCategory(c);
 	}
 	
-	@DeleteMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-	public void deleteCategory(Category c) {
-		service.deleteCategoryById(c);
+	@DeleteMapping(value="/delete/{id}")
+	public void deleteCategory(@PathVariable("id") Long id) {
+		service.deleteCategory(id);
 	}
 }

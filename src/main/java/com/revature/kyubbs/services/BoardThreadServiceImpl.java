@@ -44,11 +44,11 @@ public class BoardThreadServiceImpl implements BoardThreadService {
 	@Override
 	public BoardThread addBoardThread(BoardThread boardThread) {
 
-		for (BoardThread bt : findAllBoardThreads()) {
-			if (bt.getName().equals(bt.getName())) {
-				return null;
-			}
-		}
+//		for (BoardThread bt : findAllBoardThreads()) {
+//			if (bt.getName().equals(boardThread.getName())) {
+//				return null;
+//			}
+//		}
 
 		return boardThreadRepo.save(boardThread);
 	}
@@ -74,7 +74,7 @@ public class BoardThreadServiceImpl implements BoardThreadService {
 	}
 
 	@Override
-	public void deleteBoardThread(BoardThread boardThread) {
-		boardThreadRepo.delete(boardThread);
+	public void deleteBoardThread(Long id) {
+		boardThreadRepo.deleteById(id);
 	}
 }

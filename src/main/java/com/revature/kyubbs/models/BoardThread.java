@@ -1,19 +1,26 @@
 package com.revature.kyubbs.models;
 
 
+import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Component
 @Entity
 @Table(name="KB_THREADS")
 
-public class BoardThread {
+public class BoardThread implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="THREAD_ID")
@@ -36,37 +43,33 @@ public class BoardThread {
 	private String content;
 	
 	@Column(name="THREAD_START_DATE")
-	@NotNull
 	private Timestamp startDate;
 	
 	@Column(name="THREAD_MODIFIED_DATE")
-	@NotNull
 	private Timestamp modifiedDate;
 	
 	@Column(name="THREAD_FLAG")
-	@NotNull
 	private int flag;
 	
 	@Column(name="THREAD_IP_ADDRESS")
-	@NotNull
 	private String ipAddress;
 	
-	@ManyToOne(targetEntity = AuthUser.class)
-    @JoinColumn(name="AUTH_USER_ID")
-    @NotNull
-    private Long authenticatedUserId;
-    
-    @ManyToOne(targetEntity = Board.class)
-    @JoinColumn(name="BOARD_ID")
-    @NotNull
-    private Long boardId;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="USER_ID")
+	private User authenticatedUserId;
 	
-	public BoardThread() {
-		super();
-	}
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="BOARD_ID")
+	@NotNull
+	private Board boardId;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="threadId", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<Post> posts;
 
-	public BoardThread(Long id, String title, String name, String subject, String content, Timestamp startDate,
-			Timestamp modifiedDate, int flag, String ipAddress, Long authenticatedUserId, Long boardId) {
+	public BoardThread(Long id, @NotNull String title, @NotNull String name, @NotNull String subject,
+			@NotNull String content, Timestamp startDate, Timestamp modifiedDate, int flag, String ipAddress,
+			User authenticatedUserId, @NotNull Board boardId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -81,18 +84,17 @@ public class BoardThread {
 		this.boardId = boardId;
 	}
 
-	public BoardThread(String title, String name, String subject, String content, Timestamp startDate,
-			Timestamp modifiedDate, int flag, String ipAddress, Long authenticatedUserId, Long boardId) {
+	public BoardThread() {
+		super();
+	}
+
+	public BoardThread(@NotNull String title, @NotNull String name, @NotNull String subject, @NotNull String content,
+			@NotNull Board boardId) {
 		super();
 		this.title = title;
 		this.name = name;
 		this.subject = subject;
 		this.content = content;
-		this.startDate = startDate;
-		this.modifiedDate = modifiedDate;
-		this.flag = flag;
-		this.ipAddress = ipAddress;
-		this.authenticatedUserId = authenticatedUserId;
 		this.boardId = boardId;
 	}
 
@@ -168,20 +170,28 @@ public class BoardThread {
 		this.ipAddress = ipAddress;
 	}
 
-	public Long getAuthenticatedUserId() {
+	public User getAuthenticatedUserId() {
 		return authenticatedUserId;
 	}
 
-	public void setAuthenticatedUserId(Long authenticatedUserId) {
+	public void setAuthenticatedUserId(User authenticatedUserId) {
 		this.authenticatedUserId = authenticatedUserId;
 	}
 
-	public Long getBoardId() {
+	public Board getBoardId() {
 		return boardId;
 	}
 
-	public void setBoardId(Long boardId) {
+	public void setBoardId(Board boardId) {
 		this.boardId = boardId;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 	@Override
@@ -196,6 +206,7 @@ public class BoardThread {
 		result = prime * result + ((ipAddress == null) ? 0 : ipAddress.hashCode());
 		result = prime * result + ((modifiedDate == null) ? 0 : modifiedDate.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((posts == null) ? 0 : posts.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((subject == null) ? 0 : subject.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -248,6 +259,11 @@ public class BoardThread {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (posts == null) {
+			if (other.posts != null)
+				return false;
+		} else if (!posts.equals(other.posts))
+			return false;
 		if (startDate == null) {
 			if (other.startDate != null)
 				return false;
@@ -271,6 +287,8 @@ public class BoardThread {
 		return "BoardThread [id=" + id + ", title=" + title + ", name=" + name + ", subject=" + subject + ", content="
 				+ content + ", startDate=" + startDate + ", modifiedDate=" + modifiedDate + ", flag=" + flag
 				+ ", ipAddress=" + ipAddress + ", authenticatedUserId=" + authenticatedUserId + ", boardId=" + boardId
-				+ "]";
+				+ ", posts=" + posts + "]";
 	}
+	
+	
 }
