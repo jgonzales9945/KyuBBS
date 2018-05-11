@@ -39,13 +39,13 @@ public class BannedIpController {
 		return service.findBannedIpById(id);
 	}
 	
-	@PatchMapping(produces="application/json", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PatchMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public BannedIp updateBannedIp(@Valid @RequestBody BannedIp b) {
-		return service.updateBannedIpById(b);
+		return service.updateBannedIp(b);
 	}
 	
 	@DeleteMapping(value="/delete/{id}")
 	public void deleteBannedIp(@PathVariable("id")  Long id) {
-		service.deleteBannedIpById(id);
+		service.deleteBannedIp(id);
 	}
 }

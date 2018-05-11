@@ -31,7 +31,6 @@ public class BoardThread implements Serializable{
 	private String title;
 	
 	@Column(name="THREAD_NAME")
-	@NotNull
 	private String name;
 	
 	@Column(name="THREAD_SUBJECT")
@@ -56,7 +55,7 @@ public class BoardThread implements Serializable{
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="USER_ID")
-	private User authenticatedUserId;
+	private User userId;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="BOARD_ID")
@@ -67,9 +66,9 @@ public class BoardThread implements Serializable{
 	@OneToMany(mappedBy="threadId", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Post> posts;
 
-	public BoardThread(Long id, @NotNull String title, @NotNull String name, @NotNull String subject,
-			@NotNull String content, Timestamp startDate, Timestamp modifiedDate, int flag, String ipAddress,
-			User authenticatedUserId, @NotNull Board boardId) {
+	public BoardThread(Long id, @NotNull String title, String name, @NotNull String subject, @NotNull String content,
+			Timestamp startDate, Timestamp modifiedDate, int flag, String ipAddress, User userId,
+			@NotNull Board boardId, List<Post> posts) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -80,19 +79,31 @@ public class BoardThread implements Serializable{
 		this.modifiedDate = modifiedDate;
 		this.flag = flag;
 		this.ipAddress = ipAddress;
-		this.authenticatedUserId = authenticatedUserId;
+		this.userId = userId;
 		this.boardId = boardId;
+		this.posts = posts;
 	}
 
 	public BoardThread() {
 		super();
 	}
-
-	public BoardThread(@NotNull String title, @NotNull String name, @NotNull String subject, @NotNull String content,
+	
+	
+	
+	public BoardThread(@NotNull String title, @NotNull String subject, @NotNull String content, String ipAddress,
 			@NotNull Board boardId) {
 		super();
 		this.title = title;
-		this.name = name;
+		this.subject = subject;
+		this.content = content;
+		this.ipAddress = ipAddress;
+		this.boardId = boardId;
+	}
+
+	public BoardThread(@NotNull String title, @NotNull String subject, @NotNull String content,
+			@NotNull Board boardId) {
+		super();
+		this.title = title;
 		this.subject = subject;
 		this.content = content;
 		this.boardId = boardId;
@@ -170,12 +181,12 @@ public class BoardThread implements Serializable{
 		this.ipAddress = ipAddress;
 	}
 
-	public User getAuthenticatedUserId() {
-		return authenticatedUserId;
+	public User getUserId() {
+		return userId;
 	}
 
-	public void setAuthenticatedUserId(User authenticatedUserId) {
-		this.authenticatedUserId = authenticatedUserId;
+	public void setUserId(User userId) {
+		this.userId = userId;
 	}
 
 	public Board getBoardId() {
@@ -198,7 +209,6 @@ public class BoardThread implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((authenticatedUserId == null) ? 0 : authenticatedUserId.hashCode());
 		result = prime * result + ((boardId == null) ? 0 : boardId.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + flag;
@@ -210,6 +220,7 @@ public class BoardThread implements Serializable{
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((subject == null) ? 0 : subject.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
 
@@ -222,11 +233,6 @@ public class BoardThread implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		BoardThread other = (BoardThread) obj;
-		if (authenticatedUserId == null) {
-			if (other.authenticatedUserId != null)
-				return false;
-		} else if (!authenticatedUserId.equals(other.authenticatedUserId))
-			return false;
 		if (boardId == null) {
 			if (other.boardId != null)
 				return false;
@@ -279,6 +285,11 @@ public class BoardThread implements Serializable{
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
+		if (userId == null) {
+			if (other.userId != null)
+				return false;
+		} else if (!userId.equals(other.userId))
+			return false;
 		return true;
 	}
 
@@ -286,9 +297,7 @@ public class BoardThread implements Serializable{
 	public String toString() {
 		return "BoardThread [id=" + id + ", title=" + title + ", name=" + name + ", subject=" + subject + ", content="
 				+ content + ", startDate=" + startDate + ", modifiedDate=" + modifiedDate + ", flag=" + flag
-				+ ", ipAddress=" + ipAddress + ", authenticatedUserId=" + authenticatedUserId + ", boardId=" + boardId
-				+ ", posts=" + posts + "]";
+				+ ", ipAddress=" + ipAddress + ", userId=" + userId + ", boardId=" + boardId + "]";
 	}
-	
 	
 }

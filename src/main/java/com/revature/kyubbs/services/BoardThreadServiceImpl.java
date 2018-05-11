@@ -1,5 +1,6 @@
 package com.revature.kyubbs.services;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,8 @@ public class BoardThreadServiceImpl implements BoardThreadService {
 	}
 
 	@Override
-	public List<BoardThread> findBoardThreadsByAuthenticatedUserId(Long authenticatedUserId) {
-		return boardThreadRepo.findBoardThreadsByAuthenticatedUserId(authenticatedUserId);
+	public List<BoardThread> findBoardThreadsByUserId(Long authenticatedUserId) {
+		return boardThreadRepo.findBoardThreadsByUserId(authenticatedUserId);
 	}
 	
 	@Override
@@ -44,12 +45,21 @@ public class BoardThreadServiceImpl implements BoardThreadService {
 	@Override
 	public BoardThread addBoardThread(BoardThread boardThread) {
 
-//		for (BoardThread bt : findAllBoardThreads()) {
-//			if (bt.getName().equals(boardThread.getName())) {
-//				return null;
-//			}
-//		}
-
+		for (BoardThread bt : findAllBoardThreads()) {
+			if (bt.getTitle().equals(boardThread.getTitle())) {
+				return null;
+			}
+		}
+		
+		Timestamp date = new Timestamp(System.currentTimeMillis());
+		
+		boardThread.setFlag(0);
+		boardThread.setStartDate(date);
+		
+		if(boardThread.getName() == null || boardThread.getName().trim().length() <= 0) {
+			boardThread.setName("Anonymous");
+		}
+		
 		return boardThreadRepo.save(boardThread);
 	}
 
@@ -70,6 +80,10 @@ public class BoardThreadServiceImpl implements BoardThreadService {
 
 	@Override
 	public BoardThread updateThread(BoardThread boardThread) {
+		
+		Timestamp date = new Timestamp(System.currentTimeMillis());
+		boardThread.setModifiedDate(date);
+		
 		return boardThreadRepo.save(boardThread);
 	}
 
