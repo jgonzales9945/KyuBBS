@@ -3,12 +3,14 @@ package com.revature.kyubbs.models;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
-import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Component
@@ -41,34 +43,33 @@ public class BoardThread implements Serializable{
 	private String content;
 	
 	@Column(name="THREAD_START_DATE")
-	@NotNull
 	private Timestamp startDate;
 	
 	@Column(name="THREAD_MODIFIED_DATE")
-	@NotNull
 	private Timestamp modifiedDate;
 	
 	@Column(name="THREAD_FLAG")
-	@NotNull
 	private int flag;
 	
 	@Column(name="THREAD_IP_ADDRESS")
-	@NotNull
 	private String ipAddress;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="USER_ID")
-	@NotNull
 	private User authenticatedUserId;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="BOARD_ID")
 	@NotNull
 	private Board boardId;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="threadId", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<Post> posts;
 
 	public BoardThread(Long id, @NotNull String title, @NotNull String name, @NotNull String subject,
-			@NotNull String content, @NotNull Timestamp startDate, @NotNull Timestamp modifiedDate, @NotNull int flag,
-			@NotNull String ipAddress, @NotNull User authenticatedUserId, @NotNull Board boardId) {
+			@NotNull String content, Timestamp startDate, Timestamp modifiedDate, int flag, String ipAddress,
+			User authenticatedUserId, @NotNull Board boardId) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -88,18 +89,12 @@ public class BoardThread implements Serializable{
 	}
 
 	public BoardThread(@NotNull String title, @NotNull String name, @NotNull String subject, @NotNull String content,
-			@NotNull Timestamp startDate, @NotNull Timestamp modifiedDate, @NotNull int flag, @NotNull String ipAddress,
-			@NotNull User authenticatedUserId, @NotNull Board boardId) {
+			@NotNull Board boardId) {
 		super();
 		this.title = title;
 		this.name = name;
 		this.subject = subject;
 		this.content = content;
-		this.startDate = startDate;
-		this.modifiedDate = modifiedDate;
-		this.flag = flag;
-		this.ipAddress = ipAddress;
-		this.authenticatedUserId = authenticatedUserId;
 		this.boardId = boardId;
 	}
 
@@ -191,6 +186,14 @@ public class BoardThread implements Serializable{
 		this.boardId = boardId;
 	}
 
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -203,6 +206,7 @@ public class BoardThread implements Serializable{
 		result = prime * result + ((ipAddress == null) ? 0 : ipAddress.hashCode());
 		result = prime * result + ((modifiedDate == null) ? 0 : modifiedDate.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((posts == null) ? 0 : posts.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((subject == null) ? 0 : subject.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -255,6 +259,11 @@ public class BoardThread implements Serializable{
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (posts == null) {
+			if (other.posts != null)
+				return false;
+		} else if (!posts.equals(other.posts))
+			return false;
 		if (startDate == null) {
 			if (other.startDate != null)
 				return false;
@@ -278,7 +287,8 @@ public class BoardThread implements Serializable{
 		return "BoardThread [id=" + id + ", title=" + title + ", name=" + name + ", subject=" + subject + ", content="
 				+ content + ", startDate=" + startDate + ", modifiedDate=" + modifiedDate + ", flag=" + flag
 				+ ", ipAddress=" + ipAddress + ", authenticatedUserId=" + authenticatedUserId + ", boardId=" + boardId
-				+ "]";
+				+ ", posts=" + posts + "]";
 	}
+	
 	
 }

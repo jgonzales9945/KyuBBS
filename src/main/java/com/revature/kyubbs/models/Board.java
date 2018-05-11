@@ -2,11 +2,14 @@ package com.revature.kyubbs.models;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Component
 @Entity
@@ -29,24 +32,25 @@ public class Board implements Serializable {
 	private String desc;
 	
 	@Column(name="BOARD_START_DATE")
-	@NotNull
 	private Timestamp startDate;
 	
 	@Column(name="MAX_THREADS")
-	@NotNull
 	private int maxThreads;
 	
 	@Column(name="MAX_POSTS")
-	@NotNull
 	private int maxPosts;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="CATEGORY_ID")
 	@NotNull
 	private Category categoryId;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="boardId", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<BoardThread> boardThreads;
 
-	public Board(Long id, @NotNull String name, @NotNull String desc, @NotNull Timestamp startDate,
-			@NotNull int maxThreads, @NotNull int maxPosts, @NotNull Category categoryId) {
+	public Board(Long id, @NotNull String name, @NotNull String desc, Timestamp startDate, int maxThreads, int maxPosts,
+			@NotNull Category categoryId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -61,14 +65,10 @@ public class Board implements Serializable {
 		super();
 	}
 
-	public Board(@NotNull String name, @NotNull String desc, @NotNull Timestamp startDate, @NotNull int maxThreads,
-			@NotNull int maxPosts, @NotNull Category categoryId) {
+	public Board(@NotNull String name, @NotNull String desc, @NotNull Category categoryId) {
 		super();
 		this.name = name;
 		this.desc = desc;
-		this.startDate = startDate;
-		this.maxThreads = maxThreads;
-		this.maxPosts = maxPosts;
 		this.categoryId = categoryId;
 	}
 
@@ -128,10 +128,19 @@ public class Board implements Serializable {
 		this.categoryId = categoryId;
 	}
 
+	public List<BoardThread> getBoardThreads() {
+		return boardThreads;
+	}
+
+	public void setBoardThreads(List<BoardThread> boardThreads) {
+		this.boardThreads = boardThreads;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((boardThreads == null) ? 0 : boardThreads.hashCode());
 		result = prime * result + ((categoryId == null) ? 0 : categoryId.hashCode());
 		result = prime * result + ((desc == null) ? 0 : desc.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -151,6 +160,11 @@ public class Board implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Board other = (Board) obj;
+		if (boardThreads == null) {
+			if (other.boardThreads != null)
+				return false;
+		} else if (!boardThreads.equals(other.boardThreads))
+			return false;
 		if (categoryId == null) {
 			if (other.categoryId != null)
 				return false;
@@ -186,8 +200,8 @@ public class Board implements Serializable {
 	@Override
 	public String toString() {
 		return "Board [id=" + id + ", name=" + name + ", desc=" + desc + ", startDate=" + startDate + ", maxThreads="
-				+ maxThreads + ", maxPosts=" + maxPosts + ", categoryId=" + categoryId + "]";
+				+ maxThreads + ", maxPosts=" + maxPosts + ", categoryId=" + categoryId + ", boardThreads="
+				+ boardThreads + "]";
 	}
-
 	
 }

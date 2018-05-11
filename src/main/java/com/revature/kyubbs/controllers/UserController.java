@@ -41,7 +41,7 @@ public class UserController {
 		return userService.updateUserById(updatedUser);
 	}
 	
-	@GetMapping(value="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/id/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public User findUserById(@PathVariable("id") Long id) {
 		return userService.findUserById(id);
 	}

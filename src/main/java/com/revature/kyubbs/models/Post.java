@@ -28,7 +28,6 @@ public class Post implements Serializable {
 	private String content;
 	
 	@Column(name="POST_START_DATE")
-	@NotNull	
 	private Timestamp startDate;
 
 	@Column(name="POST_MODIFIED_DATE")
@@ -38,20 +37,19 @@ public class Post implements Serializable {
 	private int flag;
 
 	@Column(name="POST_IP_ADDRESS")
-	@NotNull	
 	private String ipAddress;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="USER_ID")
 	private User userId;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="THREAD_ID")
 	@NotNull	
 	private BoardThread threadId;
 
-	public Post(long postId, String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate,
-			int flag, @NotNull String ipAddress, User userId, @NotNull BoardThread threadId) {
+	public Post(long postId, String name, @NotNull String content, Timestamp startDate, Timestamp modifiedDate,
+			int flag, String ipAddress, User userId, @NotNull BoardThread threadId) {
 		super();
 		this.postId = postId;
 		this.name = name;
@@ -64,21 +62,14 @@ public class Post implements Serializable {
 		this.threadId = threadId;
 	}
 
-	public Post(String name, @NotNull String content, @NotNull Timestamp startDate, Timestamp modifiedDate, int flag,
-			@NotNull String ipAddress, User userId, @NotNull BoardThread threadId) {
-		super();
-		this.name = name;
-		this.content = content;
-		this.startDate = startDate;
-		this.modifiedDate = modifiedDate;
-		this.flag = flag;
-		this.ipAddress = ipAddress;
-		this.userId = userId;
-		this.threadId = threadId;
-	}
-
 	public Post() {
 		super();
+	}
+
+	public Post(@NotNull String content, @NotNull BoardThread threadId) {
+		super();
+		this.content = content;
+		this.threadId = threadId;
 	}
 
 	public long getPostId() {
@@ -226,6 +217,5 @@ public class Post implements Serializable {
 				+ ", modifiedDate=" + modifiedDate + ", flag=" + flag + ", ipAddress=" + ipAddress + ", userId="
 				+ userId + ", threadId=" + threadId + "]";
 	}
-	
-	
+
 }
