@@ -13,7 +13,7 @@ import com.revature.kyubbs.services.BoardThreadService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/board/thread")
+@RequestMapping("/boards/thread")
 public class BoardThreadController {
 
 	@Autowired
