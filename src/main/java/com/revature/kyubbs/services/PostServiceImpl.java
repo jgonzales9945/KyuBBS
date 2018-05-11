@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.kyubbs.models.BoardThread;
 import com.revature.kyubbs.models.Post;
 import com.revature.kyubbs.repositories.PostRepository;
 
@@ -66,5 +67,14 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public List<Post> findAllPosts() {
 		return postrepo.findAll();
+	}
+
+	@Override
+	public List<Post> findPostsByThreadId(Long threadId) {
+
+		BoardThread thread = new BoardThread();
+		thread.setId(threadId);
+		
+		return postrepo.findPostsByThreadId(thread);
 	}
 }

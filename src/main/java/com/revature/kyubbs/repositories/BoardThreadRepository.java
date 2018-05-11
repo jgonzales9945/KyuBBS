@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.revature.kyubbs.models.Board;
 import com.revature.kyubbs.models.BoardThread;
 
 @Repository
@@ -20,5 +21,5 @@ public interface BoardThreadRepository extends JpaRepository<BoardThread, Long> 
 
 	public List<BoardThread> findBoardThreadsByUserId(Long authenticatedUserId);
 	
-	public List<BoardThread> findBoardThreadsByBoardId(Long boardId);
+	public List<BoardThread> findBoardThreadsByBoardId(Board boardId);
 }

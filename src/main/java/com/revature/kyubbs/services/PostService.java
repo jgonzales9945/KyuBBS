@@ -6,7 +6,7 @@ import com.revature.kyubbs.models.Post;
 
 public interface PostService {
 	
-	// public List<Post> getAllPostsByThread(Long thread_id);
+	public List<Post> findPostsByThreadId(Long threadId);
 	public List<Post> findAllPosts();
 	public Post findPostById(Long id);
 	public Post addPost(Post post);

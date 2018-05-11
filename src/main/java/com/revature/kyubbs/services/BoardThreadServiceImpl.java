@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.kyubbs.models.Board;
 import com.revature.kyubbs.models.BoardThread;
 import com.revature.kyubbs.repositories.BoardThreadRepository;
 
@@ -39,7 +40,11 @@ public class BoardThreadServiceImpl implements BoardThreadService {
 	
 	@Override
 	public List<BoardThread> findBoardThreadsByBoardId(Long boardId) {
-		return boardThreadRepo.findBoardThreadsByBoardId(boardId);
+		
+		Board board = new Board();
+		board.setId(boardId);
+		
+		return boardThreadRepo.findBoardThreadsByBoardId(board);
 	}
 
 	@Override
